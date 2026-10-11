@@ -30,7 +30,7 @@ These are intended registration settings, not a claim that the repository is alr
 
 Detailed feature guides cover [rich text and layouts](docs/10-rich-text-and-layouts.html), [images and links](docs/11-images-and-links.html), [navigation and search](docs/13-navigation-and-search.html), and [appearance and shortcuts](docs/14-appearance-and-shortcuts.html).
 
-Screenshots live in `docs/assets/screenshots/`. Screenshots showing **Local preview** document the built-in local examples: **Save preview** stays in browser storage, while **Save to repository** publishes a Git commit in a connected project. Captions identify the state shown; a screenshot of a preview is not proof of a live registration or deployment.
+Screenshots live in `docs/assets/screenshots/`. Screenshots showing **Local preview** illustrate the app with example pages, including locally loaded samples for editor and navigation features: **Save preview** stays in browser storage, while **Save to repository** publishes a Git commit in a connected project. Captions identify the state shown; a screenshot of a preview is not proof of a live registration or deployment.
 
 ## Edit the docs
 

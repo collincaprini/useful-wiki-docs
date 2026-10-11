@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Images and links</title>
+</head>
+<body>
+  <p>Add images and useful connections while editing an HTML or older rich-text page. The image controls upload real files to the repository; the link controls attach a destination to text. Markdown authors write references in source as described in <a href="12-markdown-and-portable-files.html">Markdown and portable files</a>.</p>
+  <h2>Add an image file</h2>
+  <ol>
+    <li><p>Click <strong>Edit page</strong> and place the cursor where the image belongs.</p></li>
+    <li><p>Click <strong>Insert image</strong> and select one or more files. You can also paste image files from the clipboard or drag files onto a location in the document.</p></li>
+    <li><p>Wait for <strong>Adding image…</strong> to finish. A placeholder marks the insertion point while you continue writing or switch tabs.</p></li>
+    <li><p>Click the inserted image. Fill in <strong>Image alternative text</strong> with a short description of what it shows. The filename is used initially when no other description is supplied.</p></li>
+    <li><p>Choose <strong>Image width</strong>: <strong>Full width</strong>, <strong>Small · 240px</strong>, <strong>Medium · 480px</strong>, or <strong>Large · 720px</strong>. Imported custom widths can also appear in the menu. Images remain constrained by the available column or page width.</p></li>
+    <li><p>Save the page after all uploads have completed.</p></li>
+  </ol>
+  <p>Useful Wiki accepts PNG, JPEG, GIF, WebP, and AVIF files up to 900,000 bytes each. SVG is not an upload format. This wiki limit is smaller than the reusable editor component's default. Resize or compress a large screenshot before adding it.</p>
+  <img src="assets/screenshots/22-image-settings.jpg" alt="A selected pasted image in the local demo with alternative text, Medium 480px width, and remove-image controls." width="960">
+  <p><em>Local demo: selecting this pasted image reveals its alternative text and width controls. Demo images remain in browser storage.</em></p>
+  <h2>Understand where images are saved</h2>
+  <p>An upload creates a separate file under the configured content root's <code>assets/</code> directory, using a generated filename and a commit named <strong>Add documentation image</strong>. For a project rooted at <code>docs</code>, that directory is <code>docs/assets/</code>, even if the page is in a deeper folder. The page save is a separate commit that records the image reference.</p>
+  <p>While reading and editing, the app serves repository images through an authorized asset route. Saving HTML or rich JSON converts those temporary app URLs back to relative repository paths. A page beside the assets folder might contain <code>&lt;img src="assets/example.png" alt="Project setup dialog"&gt;</code>; a page one folder deeper might use <code>../assets/example.png</code>. Preserve these portable references when editing in Git.</p>
+  <p>Canceling a page edit or removing an image from its document does not delete an asset already uploaded to GitHub. Asset uploads happen immediately. Remove unused asset files separately in the repository after checking for other references. In the demo, images use browser-local data URLs and do not upload to GitHub.</p>
+  <h2>Move, remove, and retry</h2>
+  <p>Drag the image or its block handle to move it. Select the image and click <strong>Remove image</strong> to remove its reference from the page. The page edit can be undone.</p>
+  <p>If an upload fails, the placeholder displays <strong>Image could not be added</strong> and an explanation. Use <strong>Remove image upload</strong>, fix the file size, format, connection, or access problem, and add the file again. Reloading an unfinished upload does not resume it; an interrupted-upload message asks you to add it again. Removing a placeholder prevents a completed upload from being inserted back into the document.</p>
+  <p>Pasting HTML that already links to a remote image can retain that URL. It does not import the remote file into your repository. If you need a repository-owned copy, add an image file. Private repository image access is checked by Useful Wiki, just like page access.</p>
+  <h2>Add, change, or remove a text link</h2>
+  <ol>
+    <li><p>Select the words you want to link and click <strong>Add or edit link</strong>.</p></li>
+    <li><p>Enter a destination in <strong>Link URL</strong>. Use a complete <code>https://</code> or <code>http://</code> address for a website. Email and telephone links use <code>mailto:</code> and <code>tel:</code>.</p></li>
+    <li><p>Click <strong>Apply</strong> or press Enter. Unsupported URL schemes produce a validation message.</p></li>
+    <li><p>To revise a link, place the cursor inside its text and reopen the control. Change the URL and apply it. Use <strong>Remove link</strong>, or clear the field and apply, to keep the text without its destination.</p></li>
+    <li><p>Use <strong>Close link editor</strong> or Escape to close the controls. Save, then test the link in reading view; a click in the editor is used for editing text.</p></li>
+  </ol>
+  <img src="assets/screenshots/18-link-editor.jpg" alt="The visual editor link control open in the local demo, with the Link URL input, Apply, remove-link, and close buttons." width="960">
+  <p><em>Local demo: Add or edit link opens the URL field and the apply, remove, and close actions.</em></p>
+  <h2>Link to another wiki page</h2>
+  <p>For a portable internal link entered through the visual link control, begin with <code>/</code> and include the full repository path. For example, <code>/docs/01-getting-started.html</code> points to a page under the repository's <code>docs</code> directory. The initial slash means repository root when Useful Wiki resolves page references; it does not mean the configured content folder.</p>
+  <p>You can also open the destination page, use <strong>Copy link</strong>, and paste that complete Useful Wiki URL into the link control. That URL is convenient for sharing, but it is tied to the site's address. A repository-path link remains portable and participates in the wiki's internal link relationships.</p>
+  <p>The current visual link control treats a bare value such as <code>guide.html</code> or <code>../guide.html</code> as a website and prefixes <code>https://</code>. Use the leading-slash repository path in this control. Ordinary relative links are supported when written directly in HTML or Markdown source, such as <code>&lt;a href="01-getting-started.html"&gt;Getting started&lt;/a&gt;</code>. No page-search link picker is currently provided.</p>
+  <p>Repository page links power outgoing connections and backlinks; see <a href="13-navigation-and-search.html">Navigation and search</a>. Keep destinations inside the project's configured content root. Renaming or moving a page does not rewrite its incoming links or relative image paths automatically, so review both after an organizational change.</p>
+  <h2>Share a page address</h2>
+  <ol>
+    <li><p>Leave editing mode and open the intended page.</p></li>
+    <li><p>Click <strong>Copy link</strong> beside the page actions. A successful copy briefly changes the label to <strong>Copied</strong>.</p></li>
+    <li><p>If clipboard access is unavailable, copy the address from the browser as the app suggests.</p></li>
+  </ol>
+  <p>A copied address does not grant access to a private repository. See <a href="04-sharing-and-access.html">Sharing and access</a> for reader and contributor permissions.</p>
+</body>
+</html>

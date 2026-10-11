@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Contributing</title>
+</head>
+<body>
+  <p>Contribute documentation in <code>useful-wiki-docs</code> and application changes in <code>useful-wiki</code>. Keep each change in its intended repository, describe the problem it solves, and review the diff before sharing it.</p>
+  <h2>Improve the documentation</h2>
+  <p>These pages are the documentation and a real Useful Wiki content set. Edit them through the visual editor or directly as HTML, following <a href="06-editing-from-your-repository.html">the repository editing guide</a>. Preserve UTF-8, the version-1 format marker, page titles, and supported document elements.</p>
+  <p>Keep instructions tied to current behavior. Verify button labels, file paths, commands, and limits against the app or its source. Explain consequences such as immediate commits, draft recovery, and links affected by moves. Avoid publishing credentials, private repository information, or another installation's service configuration.</p>
+  <p>Check relative links and open changed pages in Useful Wiki. Review headings, lists, code spacing, and narrow-screen reading. When changing filenames or folders, update affected page links and image references. Preserve readable structural lines rather than reflowing whole paragraphs.</p>
+  <h2>Change the application</h2>
+  <p>Start with <a href="07-running-locally.html">local setup</a> and the app's <code>AGENTS.md</code>. Before writing Next.js code, read the relevant guide inside the installed <code>node_modules/next/dist/docs/</code>. The installed version's APIs and conventions take precedence over remembered examples; keep the generated Next.js instruction block.</p>
+  <p>Read <a href="08-architecture.html">the trust boundaries</a> before changing data access. Preserve caller-authorized GitHub requests, locked PocketBase metadata, private-content checks, original-SHA saves, and local-only demo behavior.</p>
+  <p><code>src/editor</code> is a snapshot of the separate <code>js-html-editor</code> component. Read <code>EDITOR_SOURCE.md</code> and <code>src/editor/README.md</code> before changing it. Keep application authentication, GitHub persistence, image transport, and draft management in the host integration. Coordinate reusable editor changes explicitly instead of silently modifying sibling checkouts.</p>
+  <h2>Validate the behavior</h2>
+  <p>For meaningful application changes, run:</p>
+  <pre><code class="language-bash">npm run typecheck
+npm run lint
+npm test
+npm run test:e2e
+npm run build
+</code></pre>
+  <p>Unit/API tests mock GitHub. Add coverage for the behavior or regression you changed, especially permissions, conflicts, paths, and content validation. Browser tests exercise the demo and editor; Playwright currently uses installed Microsoft Edge and port 3001. Adjust its channel for your browser, and include relevant keyboard and mobile checks for UI work.</p>
+  <p>PocketBase integration checks belong on an isolated local database. <code>node scripts/check-pocketbase.mjs</code> reads <code>.local/pocketbase-test.json</code>, requires <code>127.0.0.1</code>, and expects the schema to be initialized. Report the checks actually run and any remaining gaps.</p>
+  <h2>Share the change</h2>
+  <p>Use the repository's GitHub contribution workflow for review, including pull requests where appropriate. Useful Wiki itself saves commits directly to the selected branch and has no pull-request or suggestion interface. Describe the resulting behavior and validation so a reviewer can assess the change without this conversation.</p>
+  <p>Return to <a href="00-welcome.html">the docs home</a>.</p>
+</body>
+</html>

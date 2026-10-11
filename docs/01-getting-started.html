@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Getting started</title>
+</head>
+<body>
+  <p>Useful Wiki connects a documentation set to a normal GitHub repository. You can explore without credentials, then connect a repository when your application instance is configured.</p>
+  <h2>1. Explore the preview</h2>
+  <p>Choose <strong>Explore the preview</strong> on the dashboard, or open <code>/demo</code> on your Useful Wiki instance. Open an example project to try its pages, search, navigation, and editing tools. <strong>Local preview</strong> and <strong>Save preview</strong> identify changes that stay in your browser. They do not publish to GitHub or PocketBase. In a connected project, <strong>Save to repository</strong> creates a Git commit.</p>
+  <img src="assets/screenshots/01-preview-dashboard.jpg" alt="Local preview dashboard showing the Fieldnotes Documentation and Team handbook Wiki examples, project filters, and Find a project search" width="960">
+  <p><em>Choose an example project from the preview dashboard. Fieldnotes demonstrates Documentation; Team handbook demonstrates Wiki.</em></p>
+  <p>To run the preview yourself, follow <a href="07-running-locally.html">running locally</a>. The application starts at <code>http://localhost:3001</code>; this documentation does not assume a hosted address.</p>
+  <h2>2. Sign in with GitHub</h2>
+  <ol>
+    <li><p>Return to the main dashboard and choose <strong>Continue with GitHub</strong>.</p></li>
+    <li><p>Complete GitHub's authorization flow. Useful Wiki requests <code>read:user</code> and <code>repo</code>. The latter is broad; selecting a project inside the app does not restrict that OAuth scope to one repository.</p></li>
+    <li><p>Return to the dashboard. If an organization's repositories are unavailable, check its OAuth approval and SSO requirements in GitHub.</p></li>
+  </ol>
+  <img src="assets/screenshots/39-sign-in.jpg" alt="Signed-out local Useful Wiki dashboard with a Continue with GitHub button above the example projects" width="960">
+  <p><em>Choose Continue with GitHub from the signed-out dashboard to begin authorization. This local capture shows the sign-in action before use, not a completed login.</em></p>
+  <p>Signing in requires the instance's own OAuth and PocketBase configuration. If you are setting up the app, use <a href="07-running-locally.html">the developer setup guide</a>. Repository visibility and GitHub permissions determine what each visitor can read and write; see <a href="04-sharing-and-access.html">sharing and access</a>.</p>
+  <h2>3. Find a project</h2>
+  <p>The dashboard offers <strong>All projects</strong>, <strong>Docs</strong>, and <strong>Wikis</strong> filters. The desktop sidebar also labels the documentation filter <strong>Documentation</strong>. <strong>Find a project…</strong> searches project names, descriptions, and <code>owner/repository</code> names within the displayed project set. Clear the search and reset the filter if a project seems missing.</p>
+  <p>Open a project card to enter it. Signed-out example cards are labeled <strong>Example project</strong>; signed-in connected projects show their repository names. A project becomes available to other authorized readers through the same shared registration, rather than a separate copy for each person.</p>
+  <h2>4. Register your repository</h2>
+  <ol>
+    <li><p>Choose <strong>New project</strong>. In <strong>Add a project</strong>, search with <strong>Find a repository…</strong>.</p></li>
+    <li><p>The list loads 50 repositories at a time, ordered by their recent GitHub updates. Search filters the repositories already loaded. Use <strong>Load more repositories</strong> if yours is not present, then search again. Archived repositories cannot be selected.</p></li>
+    <li><p>Select the repository. In <strong>Make it your own</strong>, enter a <strong>Project name</strong>. Use <strong>Change repository</strong> to return to the chooser.</p></li>
+    <li><p>Choose <strong>Documentation</strong> for an ordered guide with page-tree navigation, or <strong>Wiki</strong> for discovery through connected pages. Both use ordinary repository files.</p></li>
+    <li><p>Set <strong>Branch</strong> to the branch the app should read and write. It initially uses the repository's default branch. Choose an existing branch; an empty repository can initialize its default branch when content is saved.</p></li>
+    <li><p>Set <strong>Content folder</strong> to a repository-relative folder such as <code>docs</code>, or leave it blank for the repository root. A missing folder is created when you save its first page.</p></li>
+    <li><p>Choose <strong>Add project</strong>. Registration stores project metadata and opens the workspace; it does not change repository contents.</p></li>
+  </ol>
+  <img src="assets/screenshots/19-select-repository.jpg" alt="Signed-in Add a project dialog with useful-wiki-docs entered in repository search and collincaprini/useful-wiki-docs returned" width="960">
+  <p><em>Search the loaded repositories and select collincaprini/useful-wiki-docs. This is the real signed-in repository chooser; selecting a result opens the configuration form.</em></p>
+  <p>You need GitHub write access to register a new project. There is one shared registration per repository. Selecting an already registered repository opens that registration; it does not apply newly entered settings. Project settings editing is not available in the current app. Choose the branch, folder, and mode deliberately.</p>
+  <h3>Settings for this documentation repository</h3>
+  <p>The intended registration for these files is:</p>
+  <table>
+    <tbody>
+      <tr><th><p>Field</p></th><th><p>Value</p></th></tr>
+      <tr><td><p>Repository</p></td><td><p><code>collincaprini/useful-wiki-docs</code></p></td></tr>
+      <tr><td><p>Project name</p></td><td><p>Useful Wiki documentation</p></td></tr>
+      <tr><td><p>Experience</p></td><td><p>Documentation</p></td></tr>
+      <tr><td><p>Branch</p></td><td><p><code>main</code></p></td></tr>
+      <tr><td><p>Content folder</p></td><td><p><code>docs</code></p></td></tr>
+    </tbody>
+  </table>
+  <img src="assets/screenshots/20-project-settings.jpg" alt="Make it your own form for collincaprini/useful-wiki-docs with project name Useful Wiki documentation, Documentation selected, branch main, and content folder docs" width="960">
+  <p><em>Review the intended repository settings before choosing Add project. This screenshot shows the filled configuration form before submission, not a completed registration.</em></p>
+  <p>These settings describe how to connect the repository; this guide does not establish that registration or publish a deployment.</p>
+  <h2>5. Write and save a page</h2>
+  <img src="assets/screenshots/03-new-html-page.jpg" alt="A new page dialog in the Fieldnotes local preview, with empty title, HTML visual editor selected, Project root folder, and filename field" width="960">
+  <p><em>Choose New page to open this dialog, then enter a title and review the format, folder, filename, and resulting location before starting to write.</em></p>
+  <ol>
+    <li><p>Open a page and choose <strong>Edit page</strong>, or choose <strong>New page</strong> to create one.</p></li>
+    <li><p>For a new page, enter its <strong>Title</strong>, choose <strong>HTML — visual editor</strong> or <strong>Markdown — Monaco editor</strong>, select a <strong>Folder</strong>, and review its <strong>Filename</strong> and displayed <strong>Location</strong>. Choose <strong>Start writing</strong>.</p></li>
+    <li><p>Write the content. An HTML page's title is independent of its filename. In Markdown, the first level-one heading supplies the displayed title.</p></li>
+    <li><p>Fill in <strong>Describe your change</strong>, then choose <strong>Save to repository</strong>. In a local preview the button reads <strong>Save preview</strong>.</p></li>
+    <li><p>A successful repository save creates a commit on the project's branch. If another change conflicts with yours, preserve the draft and reconcile it with the current file before saving again.</p></li>
+  </ol>
+  <p>Continue with <a href="02-writing-pages.html">writing pages and recovering drafts</a>, <a href="10-rich-text-and-layouts.html">the editor tools</a>, or <a href="13-navigation-and-search.html">finding your way around</a>. Return to <a href="00-welcome.html">the guide index</a>.</p>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Markdown and portable files</title>
+</head>
+<body>
+  <p>Useful Wiki stores page content in ordinary repository files. Choose HTML for visual editing and layouts, or Markdown for source editing. Older <code>.wiki.json</code> pages remain supported. You can edit the same files with a local editor or coding assistant; there is no second generated JSON copy to keep synchronized.</p>
+  <h2>Create and edit Markdown</h2>
+  <ol>
+    <li><p>Click <strong>New page</strong>, enter a title, and choose <strong>Markdown — Monaco editor</strong> under <strong>Format</strong>.</p></li>
+    <li><p>Choose the folder and a <code>.md</code> filename, then click <strong>Start writing</strong>.</p></li>
+    <li><p>Keep the initial <code># Your title</code> heading at the top and write the page below it. The first level-one heading supplies the displayed page title; there is no separate title input.</p></li>
+    <li><p>Use Markdown headings, emphasis, links, lists, checklists, fenced code, and tables. See the example below.</p></li>
+    <li><p>Enter <strong>Describe your change</strong> and choose <strong>Save to repository</strong>, or press Ctrl/Cmd+S inside the editor. The saved page opens in reading view.</p></li>
+  </ol>
+  <pre><code class="language-markdown"># Team handbook
+
+## Before you begin
+
+- Read the [setup guide](01-getting-started.html).
+- [ ] Check your repository access.
+
+![The setup dialog](assets/setup.png)
+
+| Format | Editor |
+| --- | --- |
+| HTML | Visual editor |
+| Markdown | Monaco source editor |
+
+```sh
+git status
+```
+</code></pre>
+  <p>Keep the title heading at the beginning so reading view can show it once above the article. A page without a level-one heading falls back to a filename-derived title when loaded from the repository.</p>
+  <img src="assets/screenshots/23-markdown-editor.jpg" alt="The local demo's Getting started page open as Markdown source in Monaco, with headings, a quote, and list syntax." width="960">
+  <p><em>Local demo: Markdown pages open in Monaco with line numbers and source syntax. The first level-one heading provides the title.</em></p>
+  <h2>Use the source editor</h2>
+  <p>Monaco provides syntax highlighting, line numbers, word wrapping, undo/redo, find/replace, indentation, multiple cursors, line operations, folding, and an <strong>F1</strong> command palette. Its native shortcuts remain available, including Ctrl/Cmd+K chords. Ctrl/Cmd+S saves the page. The wiki's search shortcut does not override typing or Monaco commands while source editing.</p>
+  <p>Markdown editing is a source-only view: there is no split preview or rich-text toolbar. Save to review the rendered result. Visual image-upload, columns, and content-tab controls do not appear here. Add images to the repository and reference them with Markdown syntax. The reading view supports GitHub-flavored tables, strikethrough, and task lists; change checklist state in source when editing.</p>
+  <p>Monaco and its worker are bundled with the app. A plain text editor remains available while it loads or if loading fails, so you can still edit and save. Editor colors follow your appearance preference without changing the stored Markdown.</p>
+  <img src="assets/screenshots/24-markdown-find.jpg" alt="Monaco's Find widget open above Markdown source in the local demo, showing match options and result navigation." width="960">
+  <p><em>Local demo: Monaco's Find control searches the current Markdown source. Project-wide page search is a separate action.</em></p>
+  <h2>Copy an entire page as Markdown</h2>
+  <ol>
+    <li><p>Open the saved page in reading view. The copy action uses saved page content, so save edits first.</p></li>
+    <li><p>Click <strong>Copy as Markdown</strong> near <strong>Copy link</strong> and <strong>Edit page</strong>.</p></li>
+    <li><p>When the label changes to <strong>Page copied</strong>, paste into your editor, notes, or an assistant conversation.</p></li>
+    <li><p>If clipboard access is unavailable, the <strong>Copy page</strong> dialog opens with <strong>Page Markdown</strong> selected. Use your normal copy shortcut, then close the dialog.</p></li>
+  </ol>
+  <p>This action includes the page title and the whole document: all content tabs, every column, code, lists, checklists, tables, and image references. It reads stored document data, so inactive panels are included. It does not embed image bytes or preserve visual font, color, width, or layout styling. Treat it as a content export, not a lossless HTML conversion. Existing Markdown content stays Markdown; the title is added only when needed.</p>
+  <img src="assets/screenshots/38-copy-markdown.jpg" alt="The saved Content formats page in the local demo, with Copy as Markdown highlighted beside Copy link and Edit page." width="960">
+  <p><em>Local demo: Copy as Markdown is available in reading view and includes the saved page's complete content, including hidden tab panels.</em></p>
+  <h2>Understand the page formats</h2>
+  <table>
+    <tbody>
+      <tr><th><p>Format</p></th><th><p>Title and content</p></th><th><p>Use</p></th></tr>
+      <tr><td><p><code>.html</code> / <code>.htm</code></p></td><td><p>HTML title metadata and a supported HTML body.</p></td><td><p>Visual editing with rich text, tables, images, code, columns, and tabs. New pages use .html.</p></td></tr>
+      <tr><td><p><code>.md</code> / <code>.markdown</code></p></td><td><p>First level-one heading and Markdown source.</p></td><td><p>Monaco source editing and rendered reading. New pages use .md.</p></td></tr>
+      <tr><td><p><code>.wiki.json</code></p></td><td><p>A version-1 object containing title and a Tiptap document tree.</p></td><td><p>Existing rich documents remain readable and visually editable. The new-page dialog does not create this format.</p></td></tr>
+    </tbody>
+  </table>
+  <p>Choosing a format is part of new-page creation. There is no in-place format-conversion menu. Renaming a JSON file to <code>.html</code> does not convert its contents. For conversion, create a correctly structured new file and review the result before replacing the old page.</p>
+  <h2>Keep HTML portable</h2>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="useful-wiki-format" content="1"&gt;
+  &lt;title&gt;Example page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;A page with a &lt;a href="01-getting-started.html"&gt;relative link&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  <p>Version-1 HTML uses UTF-8, a title of 1–200 characters, and supported body elements. The current visual editor supports Heading 1 through Heading 6. Preserve layout <code>data-*</code> attributes, styles, table cell dimensions, tab labels and fallback headings, image alternative text, and whitespace inside code blocks when making source edits.</p>
+  <p>Use relative page and image paths. Do not write session-bound <code>/api/projects/…</code> image URLs into repository files. Columns use semantic column containers; tabs export every panel as a labeled section. A plain HTML viewer can retain the content without embedded app scripts, although interactive tab behavior belongs to Useful Wiki's reader.</p>
+  <p>Useful Wiki is a document editor, not an arbitrary website host. Scripts, iframes, forms, executable embeds, and external stylesheets are unsupported. HTML is sanitized and normalized to the editor's document schema, so an HTML round trip preserves meaning rather than exact source bytes. Each page is limited to 700,000 bytes.</p>
+  <h2>Download the repository editing guide</h2>
+  <p>At the bottom of the project sidebar, click <strong>Download repository editing guide</strong>. It downloads <code>USEFUL_WIKI.md</code>, a text guide for people and coding assistants explaining file structure, columns, tabs, images, checklists, older formats, and safe work alongside the browser editor. This is a format reference, not an export of your project's pages.</p>
+  <p>Follow <a href="06-editing-from-your-repository.html">Editing from your repository</a> for the complete contributor workflow. Commit on the configured branch, reload Useful Wiki to review changes, and reconcile any concurrent browser draft instead of overwriting a newer revision.</p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Sharing and access</title>
+</head>
+<body>
+  <p>Useful-wiki uses your repository's GitHub permissions. Saving a page publishes a commit to the project's selected branch. Sharing a link gives someone the address; it does not change who can read or edit the repository.</p>
+  <h2>Share a page link</h2>
+  <ol>
+    <li><p>Open the page you want to share. If you are editing it, save the changes you want other readers to see.</p></li>
+    <li><p>In reading mode, choose <strong>Copy link</strong> above the page. On a narrow screen this action may appear as a link icon without its text label.</p></li>
+    <li><p>Wait for the action to show <strong>Copied</strong>, then paste the address into your message or another document.</p></li>
+    <li><p>If clipboard access is unavailable, copy the address from your browser instead.</p></li>
+  </ol>
+  <p>Page addresses include the repository owner, repository name, folders, and filename. Changing the page title leaves its address unchanged. Renaming or moving the file changes the address, so update shared links afterward.</p>
+  <p>The address opens the saved repository version. Unsaved edits stay in your browser and are not included in the link. Another reader can reload the page after you save to load the newer version; editing is not a live shared session.</p>
+  <img src="assets/screenshots/02-page-reader.jpg" alt="Fieldnotes Getting started page in local preview with Copy as Markdown and Copy link above the content" width="960">
+  <p><em>Copy link and Copy as Markdown appear above the page in reading view. This is the Fieldnotes local preview; copying its link does not publish browser edits.</em></p>
+  <h3>Share a folder or a section</h3>
+  <ol>
+    <li><p>To share a folder, click its name in the sidebar to open its generated index, then copy the browser address.</p></li>
+    <li><p>To share a section, use a heading link from <strong>On this page</strong> on a wide screen. Copy that link's address using the browser's link menu, or copy the browser address after following the heading.</p></li>
+    <li><p>Keep the heading fragment, the part after <code>#</code>, when pasting a section link.</p></li>
+  </ol>
+  <p>A section inside a content tab opens the relevant tab before scrolling. Heading text usually determines its anchor, so changing the heading can change the link. Explicit heading IDs from repository-authored HTML are preserved.</p>
+  <h2>Copy the content as Markdown</h2>
+  <ol>
+    <li><p>Open the saved page in reading mode and choose <strong>Copy as Markdown</strong>.</p></li>
+    <li><p>When the button shows <strong>Page copied</strong>, paste the content into your document, notes, or LLM conversation.</p></li>
+    <li><p>If clipboard access is blocked, the <strong>Copy page</strong> dialog opens with selected Markdown. Copy that text manually.</p></li>
+  </ol>
+  <p>The copy includes the page title and complete content: inactive tabs, columns, lists, checklists, tables, code, links, and image references. It omits visual styling and image bytes. Relative links and image references may need adjustment outside the repository.</p>
+  <img src="assets/screenshots/38-copy-markdown.jpg" alt="Content formats page in the local preview with the Copy as Markdown button focused above the document" width="960">
+  <p><em>The Copy as Markdown button is focused on the local-preview Content formats page. Use this action to copy the complete saved page, including content in inactive tabs.</em></p>
+  <p>Copied content is a separate copy. Future edits to the source page do not update it, and GitHub access controls do not follow text you paste elsewhere. Share a page link when readers need the current saved version.</p>
+  <h3>Copy a code block</h3>
+  <p>Use <strong>Copy code</strong> in a code block's header to copy that block as plain text with its whitespace intact. This works while reading or editing. If copying fails, select the code and use Ctrl+C or Cmd+C.</p>
+  <h2>Link between pages</h2>
+  <ol>
+    <li><p>Open the destination page and use <strong>Copy link</strong>.</p></li>
+    <li><p>Edit the source page and select the words that should become the link.</p></li>
+    <li><p>Choose <strong>Add or edit link</strong>, paste the full address into <strong>Link URL</strong>, and choose <strong>Apply</strong>.</p></li>
+    <li><p>Save, then follow the link from reading mode to check its destination.</p></li>
+  </ol>
+  <p>In the visual link editor, use a full address, a root-relative path beginning with <code>/</code>, or a same-page fragment beginning with <code>#</code>. Bare input is treated as a website address. If you edit HTML or Markdown directly in the repository, use document-relative paths to keep links portable; see <a href="06-editing-from-your-repository.html">Editing from your repository</a>.</p>
+  <p>Document-relative links between recognized project pages also feed <strong>Keep exploring</strong> and wiki backlinks. Full hosted addresses open the destination but may not be recognized by those discovery lists. Review links after a file moves or is renamed.</p>
+  <h2>Understand public and private access</h2>
+  <p>A public repository is public. Anyone can read its registered useful-wiki project through a direct link without signing in. This documentation repository is public, so add only material intended for public readers. A public page link does not give visitors permission to edit.</p>
+  <p>A private repository requires the visitor to sign in with GitHub and have access to that repository. A copied link does not grant access. Private pages, images, search results, and backlinks use the visitor's repository authorization.</p>
+  <ol>
+    <li><p>Check the <strong>Public</strong> or <strong>Private</strong> indicator and selected branch at the bottom of the project sidebar.</p></li>
+    <li><p>If a collaborator needs access, manage their repository or organization permissions in GitHub.</p></li>
+    <li><p>Share the page address and have the collaborator sign in with their own GitHub account when required.</p></li>
+  </ol>
+  <p>Use the repository link below the visibility indicator to open the repository in GitHub. Useful-wiki does not provide its own invitations or a separate permission system.</p>
+  <h3>Who can make changes?</h3>
+  <p>GitHub read access permits browsing. GitHub write access is required to publish page edits and create, rename, move, or delete files. An archived repository is read-only in the app. Project registration also requires write access when that repository has not already been registered.</p>
+  <p>Organization approval, SSO authorization, and branch rules still apply. A branch that requires pull requests can reject a direct save even when you normally have write access. Useful-wiki does not currently offer pull requests, suggestions, or live co-editing.</p>
+  <h2>Sign in and sign out</h2>
+  <ol>
+    <li><p>Choose <strong>Sign in</strong> in the header and complete GitHub's authorization flow with your own account.</p></li>
+    <li><p>Return to the project. Editing actions appear when GitHub grants write access.</p></li>
+    <li><p>When finished, save or copy any draft content you need, open your account menu in the header, and choose <strong>Sign out</strong>.</p></li>
+  </ol>
+  <p>Sign-out clears useful-wiki drafts stored in that browser tab's session and reloads the app. Sessions expire; sign in again if your authorization expires or is revoked. Repository selection organizes projects inside the app but does not narrow the GitHub OAuth grant: the app requests the broad <code>repo</code> scope.</p>
+  <img src="assets/screenshots/21-account-menu.jpg" alt="Signed-in Useful Wiki dashboard with the account dropdown open and the Sign out action visible" width="960">
+  <p><em>The account menu in a signed-in installation exposes Sign out. This is an actual account session, not the demo; Sign out was not selected for the capture.</em></p>
+  <h2>Review what was published</h2>
+  <ol>
+    <li><p>After a successful page save, find <strong>Saved to GitHub. View commit</strong> above the content.</p></li>
+    <li><p>Open <strong>View commit</strong> to inspect the published change in GitHub.</p></li>
+    <li><p>For wider repository history, open the repository from the sidebar and use GitHub's history tools.</p></li>
+  </ol>
+  <p>GitHub is the source of saved files and history. Drafts remain browser data until a save succeeds. If a save fails or conflicts with another change, keep your draft and follow <a href="05-troubleshooting.html">Troubleshooting</a>.</p>
+  <h2>Share from the local preview</h2>
+  <p>Demo projects are labeled <strong>Local preview</strong> and save changes only in the current browser. Copying a demo link shares the route to that example; it does not send your local edits, uploaded images, or drafts to another person. Use a connected repository to publish shared documentation, or copy the content as Markdown when you need a separate text copy.</p>
+  <p>Continue with <a href="02-writing-pages.html">Writing pages</a> or <a href="03-organizing-pages.html">Organizing pages</a>, or return to <a href="00-welcome.html">Welcome</a>.</p>
+</body>
+</html>

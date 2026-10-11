@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Rich text, tables, code, and layouts</title>
+</head>
+<body>
+  <p>Open an HTML or older rich-text page and click <strong>Edit page</strong>. Select text to change existing content, or place the cursor where you want to write or insert a block. Hover over an icon to read its label. Save your changes using <a href="02-writing-pages.html">Writing and saving pages</a>.</p>
+  <h2>Format text</h2>
+  <table>
+    <tbody>
+      <tr><th><p>Control</p></th><th><p>How to use it</p></th></tr>
+      <tr><td><p>Text style</p></td><td><p>Choose Paragraph or Heading 1 through Heading 6. Headings create document structure and feed the reading view's outline.</p></td></tr>
+      <tr><td><p>Font family</p></td><td><p>Choose Theme font, Sans serif, Serif, or Monospace. Theme font follows the selected appearance.</p></td></tr>
+      <tr><td><p>Font size</p></td><td><p>Enter 8–144 pixels, then press Enter or leave the field. An invalid value reverts to the current size.</p></td></tr>
+      <tr><td><p>Bold, Italic, Underline, Strikethrough</p></td><td><p>Click to toggle a style. Bold, italic, and underline also use Ctrl/Cmd+B, Ctrl/Cmd+I, and Ctrl/Cmd+U.</p></td></tr>
+      <tr><td><p>Text color</p></td><td><p>Open the color picker. After applying a color, use Use theme text color to remove that explicit color.</p></td></tr>
+      <tr><td><p>Highlight</p></td><td><p>Toggle the preset pale-yellow background on selected text. Clicking again removes the highlight.</p></td></tr>
+      <tr><td><p>Inline code</p></td><td><p>Mark a short filename, command, or identifier. Use a Code block for multiple lines.</p></td></tr>
+      <tr><td><p>Add or edit link</p></td><td><p>Link selected text using the Link URL field. See <a href="11-images-and-links.html">Images and links</a> for internal-link paths and removal.</p></td></tr>
+    </tbody>
+  </table>
+  <p>Use <strong>Undo (Ctrl+Z)</strong> and <strong>Redo (Ctrl+Shift+Z)</strong> at the left of the toolbar to reverse or repeat edits. On macOS use Cmd in these shortcuts. Undo history belongs to the current editor session; it is not a replacement for Git history.</p>
+  <h2>Lists, quotes, alignment, and indentation</h2>
+  <ol>
+    <li><p>Place the cursor in a paragraph or select several paragraphs.</p></li>
+    <li><p>Click <strong>Bullet list</strong>, <strong>Numbered list</strong>, <strong>Checklist</strong>, or <strong>Quote</strong>. Click an active control again to toggle it off. In a checklist, click an item's checkbox to change its checked state while editing.</p></li>
+    <li><p>Use <strong>Align left</strong>, <strong>Align center</strong>, <strong>Align right</strong>, or <strong>Justify</strong> on paragraphs and headings.</p></li>
+    <li><p>Use <strong>Increase indent</strong> and <strong>Decrease indent</strong>, or Ctrl/Cmd+] and Ctrl/Cmd+[, to change paragraph/heading indentation from 0 to 8 levels.</p></li>
+  </ol>
+  <p><strong>Tab</strong> has a context-specific meaning: in prose it inserts a literal tab stop displayed at a four-character width; in a list or checklist it nests the item; in a table it advances between cells; in a code block it indents by two spaces. <strong>Shift+Tab</strong> reverses indentation or moves backward between table cells. <strong>Insert → Tab stop</strong> explicitly inserts the prose tab-stop character. There is no custom tab-position ruler.</p>
+  <h2>Insert blocks</h2>
+  <p>Place the cursor at the insertion point, open <strong>Insert</strong>, and choose <strong>Two columns</strong>, <strong>Three columns</strong>, <strong>Content tabs</strong>, <strong>Table</strong>, <strong>Code block</strong>, <strong>Divider</strong>, or <strong>Tab stop</strong>. The right side of the toolbar also has <strong>Insert image</strong>, <strong>Insert columns</strong>, and <strong>Insert content tabs</strong> shortcuts. Divider creates a horizontal rule between sections.</p>
+  <img src="assets/screenshots/06-insert-menu.jpg" alt="The visual editor Insert menu showing Two columns, Three columns, Content tabs, Table, Code block, Divider, and Tab stop in the local demo." width="960">
+  <p><em>Local demo: the Insert menu groups the available document blocks and the prose tab stop.</em></p>
+  <h2>Build and change a table</h2>
+  <ol>
+    <li><p>Choose <strong>Insert → Table</strong>. The initial table has three columns and three rows, including a header row.</p></li>
+    <li><p>Click a cell and enter its content. Press Tab or Shift+Tab to move between cells. Drag a column boundary to adjust its width.</p></li>
+    <li><p>While the cursor is in the table, use its toolbar: <strong>Add row</strong>, <strong>Add column</strong>, <strong>Delete row</strong>, <strong>Delete column</strong>, or <strong>Remove table</strong>. Add actions insert after the selected row or column.</p></li>
+    <li><p>Alternatively, hover beside the table for <strong>Insert column on the left</strong> and <strong>Insert column on the right</strong>, or below it for <strong>Insert row below</strong>. Hover a header cell to reveal <strong>Delete hovered column</strong>; hover a row's first or last cell for <strong>Delete hovered row</strong>.</p></li>
+  </ol>
+  <p>Hover actions target the hovered cell, independently of the current selection. Deletions are undoable. The toolbar provides the same core operations without depending on hovering. Imported merged-cell attributes are preserved, but the current toolbar has no merge/split commands.</p>
+  <img src="assets/screenshots/15-table-controls.jpg" alt="An editable demo table with plus buttons at its left, right, and bottom and hovered row and column deletion controls." width="960">
+  <p><em>Local demo: hover controls add table columns or rows and remove the hovered column or row.</em></p>
+  <h2>Write and copy a code block</h2>
+  <ol>
+    <li><p>Choose <strong>Insert → Code block</strong>.</p></li>
+    <li><p>Choose <strong>Code language</strong>: Plain text, JavaScript, TypeScript, JSON, HTML, CSS, Python, SQL, Shell, Markdown, YAML, Go, Rust, Java, C#, or C++.</p></li>
+    <li><p>Write in the embedded Monaco editor. Enter always makes a new line, even on an empty line. Tab indents by two spaces and Shift+Tab outdents. Highlighting helps you read the code; the block does not run it.</p></li>
+    <li><p>Click <strong>Copy code</strong> to copy the entire block with its whitespace. This also works in reading view. If clipboard access fails, select the code and use Ctrl/Cmd+C.</p></li>
+    <li><p>Press <strong>Ctrl/Cmd+Enter</strong> to move to a paragraph immediately after the block, including inside a column or tab. Escape focuses the copy button so you can leave the embedded editor with the keyboard.</p></li>
+  </ol>
+  <p>Use the upper-right <strong>Delete code block</strong> × control to remove the block and its contents. It appears on hover or keyboard focus and remains available on touch screens. Undo restores it. Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z, and Ctrl/Cmd+Y inside code use the surrounding document's history. Ctrl/Cmd+S saves the page. A plain editor remains usable if Monaco or its highlighting cannot load.</p>
+  <img src="assets/screenshots/17-code-editor.jpg" alt="An HTML code block inside the Repository HTML content tab, with syntax highlighting, a language selector, and Copy code in the local demo." width="960">
+  <p><em>Local demo: an embedded code editor retains the code's whitespace and provides a language selector and copy action.</em></p>
+  <h2>Arrange columns</h2>
+  <ol>
+    <li><p>Insert two or three columns. Click inside each column and add normal text, images, tables, or other supported blocks.</p></li>
+    <li><p>Use <strong>Add column</strong> in the column group's controls to reach a maximum of four columns. Adding a column resets widths to an equal split.</p></li>
+    <li><p>Drag a vertical separator to resize adjacent columns. You can also focus <strong>Resize column 1</strong> or another separator and press Left/Right to change the split in two-percentage-point steps. Each adjacent column retains at least 12% width. Double-click a separator to restore equal widths.</p></li>
+    <li><p>Use <strong>Drag columns</strong> to move the group. Use <strong>Convert columns to normal blocks</strong> to keep all the content in column order and remove the column layout.</p></li>
+  </ol>
+  <p><strong>Delete column</strong> removes that column and its contents in one undoable action. If you remove one of two columns, the remaining content becomes ordinary blocks. Columns stack vertically on narrow screens.</p>
+  <img src="assets/screenshots/35-column-controls.jpg" alt="Two editable columns in the local demo, showing group drag, add-column, convert-to-blocks controls, and a column's delete button." width="960">
+  <p><em>Local demo: the controls above the two-column group move it, add a column, or convert it to ordinary blocks. The × inside a column removes that column and its contents.</em></p>
+  <h2>Create and edit content tabs</h2>
+  <ol>
+    <li><p>Choose <strong>Insert → Content tabs</strong>. A new group starts with <strong>Overview</strong> and <strong>Details</strong>.</p></li>
+    <li><p>Select a tab and edit its panel. Use <strong>Add tab</strong> to add panels, up to eight total.</p></li>
+    <li><p>Click <strong>Rename active tab</strong>. Edit <strong>Tab name</strong>, up to 40 characters. The same settings row contains <strong>Move tab left</strong>, <strong>Move tab right</strong>, and <strong>Remove active tab</strong>.</p></li>
+    <li><p>Use <strong>Drag tab group</strong> to move the whole group. When a tab button has focus, Left/Right cycles through panels and Home/End selects the first/last panel.</p></li>
+  </ol>
+  <p>A group must retain one tab. Removing a tab removes its contents and can be undone. Which tab is currently open is display state; saving includes every panel. Readers can switch tabs without changing page content. Plain HTML and Markdown exports include all panels.</p>
+  <img src="assets/screenshots/16-column-and-tab-controls.jpg" alt="The Reading tab's settings expanded in the local demo, showing its editable name, move arrows, Remove tab, and tab-group controls." width="960">
+  <p><em>Local demo: Rename active tab opens the tab name, reorder, and remove controls beneath the tab bar.</em></p>
+  <h2>Move blocks and leave nested content</h2>
+  <p>Hover beside an ordinary block to reveal <strong>Drag block</strong>. Drag it above or below another block to reorder content, or into another column. Drag near the left or right edge of an ordinary block until the side indicator appears, then drop to create a two-column group. Side drops work in the main document, a column, and a tab panel; an existing column group is not a side-drop target. Moving a block this way is undoable as one operation.</p>
+  <p>Outside embedded code, <strong>Ctrl/Cmd+Enter</strong> adds a paragraph at the end of the document, useful when you are inside a nested layout. <strong>Escape</strong> releases rich-editor focus.</p>
+  <p>The current visual editor has no slash-command menu, comments, simultaneous editing, or rich-text find/replace. Touch drag sensors and full Word/Google Docs paste fidelity are not implemented. Pasted HTML is normalized to the supported document structure, so review complex pasted content before saving. Markdown source editing has its own find/replace controls; see <a href="12-markdown-and-portable-files.html">Markdown and portable files</a>.</p>
+</body>
+</html>

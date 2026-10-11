@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Appearance and keyboard shortcuts</title>
+</head>
+<body>
+  <p>Choose a reading appearance, make room for the document, and use the keyboard in the right context. A shortcut can do different things in page navigation, rich text, a code block, or the Markdown source editor.</p>
+  <h2>Choose a palette and color mode</h2>
+  <ol>
+    <li><p>Choose the palette button in the header, labeled <strong>Choose theme</strong>. It is available on the dashboard and inside projects.</p></li>
+    <li><p>Under <strong>Appearance</strong>, choose <strong>Light</strong> or <strong>Dark</strong>.</p></li>
+    <li><p>Under <strong>Color theme</strong>, choose a palette. Scroll the menu to see all 43 choices.</p></li>
+    <li><p>Click outside the menu or press Escape to close it. Your choice takes effect immediately.</p></li>
+  </ol>
+  <p>The initial palette is <strong>Default</strong>, with the app's sage colors. Palette and mode are independent: you can use any palette in Light or Dark mode. The app does not expose System or Sepia modes.</p>
+  <img src="assets/screenshots/25-appearance-menu.jpg" alt="Local-preview Appearance menu with Light and Dark choices and a scrollable Color theme palette list" width="960">
+  <p><em>Choose Light or Dark independently of the palette. This local-preview menu shows Default selected and the start of the scrollable palette list.</em></p>
+  <p>Your choice is stored in the current browser and synchronized between its open app tabs. It affects the interface, readers, rich editors, Markdown editor, and code surfaces without saving a repository change. It is not a project setting and does not choose an appearance for other readers.</p>
+  <img src="assets/screenshots/26-dark-mode.jpg" alt="Team handbook local-preview page displayed with the Default palette in Dark mode" width="960">
+  <p><em>The Team handbook local preview in Dark mode. Appearance changes do not publish edits to its content.</em></p>
+  <h3>Available palettes</h3>
+  <p>Default, Amber Minimal, Bold Tech, Bubblegum, Caffeine, Candyland, Catppuccin, Claude, Claymorphism, Clean Slate, Cosmic Night, Cyberpunk, Doom 64, Elegant Luxury, GitHub, Graphite, Kick, Kodama Grove, Midnight Bloom, Mocha Mousse, Modern Minimal, Mono, Nature, Neo Brutalism, Northern Lights, Ocean Breeze, Pastel Dreams, Perpetuity, Quantum Rose, Retro Arcade, Solar Dusk, Spotify, Starry Night, Stripe, Sunset Horizon, Supabase, T3 Chat, Tangerine, Twitch, Twitter, Vercel, Vintage Paper, and Windows 98.</p>
+  <h3>Let authored text follow the theme</h3>
+  <p>A theme change preserves explicit text formatting inside the document. To remove a font override, select the text while editing and choose <strong>Theme font</strong> under Font family. To remove an explicit text color, select the text and use <strong>Use theme text color</strong>, which appears when a color override is active. These formatting edits change the document and need a normal save.</p>
+  <p>Code syntax has light and dark palettes. Changing the interface's color palette does not create a new language-highlighting scheme, and choosing a theme does not discard editor content or undo history.</p>
+  <h2>Show or hide navigation</h2>
+  <ol>
+    <li><p>On desktop, choose <strong>Collapse sidebar</strong> in the header to give the content more room.</p></li>
+    <li><p>Choose <strong>Expand sidebar</strong> to restore it. The app remembers this preference in the browser.</p></li>
+    <li><p>On a small screen, choose <strong>Open navigation</strong> to open the sidebar as a drawer. Choose a page to navigate and close the drawer.</p></li>
+  </ol>
+  <p>Tree actions are shown on hover or keyboard focus on desktop and remain visible on touch devices. Content columns stack on narrow screens. The right-hand <strong>On this page</strong> and <strong>Keep exploring</strong> panels are shown only on wide screens.</p>
+  <img src="assets/screenshots/27-collapsed-sidebar.jpg" alt="Local-preview document with the desktop project sidebar collapsed to leave more reading space" width="960">
+  <p><em>Collapse sidebar gives the local-preview document more horizontal space; the header control restores navigation.</em></p>
+  <img src="assets/screenshots/32-mobile-reader.jpg" alt="Narrow-screen Team handbook local-preview page with navigation, search, theme, account, and fullscreen icons in the header" width="355">
+  <p><em>The narrow-screen reader keeps header actions available while the sidebar and right-hand outline are hidden.</em></p>
+  <img src="assets/screenshots/33-mobile-navigation.jpg" alt="Mobile navigation drawer in the Team handbook local preview, showing search, wiki exploration, pages, and visible edit actions" width="355">
+  <p><em>Open navigation reveals the mobile drawer. This local-preview example keeps page actions visible for touch users.</em></p>
+  <h2>Enter and leave fullscreen</h2>
+  <ol>
+    <li><p>Choose <strong>Enter fullscreen</strong> in the header.</p></li>
+    <li><p>Continue reading or editing in the browser's fullscreen view.</p></li>
+    <li><p>Choose <strong>Exit fullscreen</strong> or press Escape to return to the normal window.</p></li>
+  </ol>
+  <p>The button is disabled when fullscreen is unavailable in the browser. If a request fails, the app displays an error that can be dismissed. Fullscreen changes the browser presentation, not the document.</p>
+  <img src="assets/screenshots/36-fullscreen.jpg" alt="Local-preview reader with the error Fullscreen could not be changed, Please try again beneath the fullscreen button" width="960">
+  <p><em>The browser refused this fullscreen request and the local preview displayed a retry message. Dismiss the notice or try the control again; this capture does not show a successful fullscreen change.</em></p>
+  <h2>How to read the shortcut tables</h2>
+  <p><strong>Mod</strong> means Ctrl on Windows/Linux and Cmd on macOS; Alt is Option on macOS. Where a command differs, both versions are listed. Put focus in the relevant surface first. Editor save shortcuts work while focus is inside the content editor, its toolbar, or its content-tab controls; use the save button when focus is in Page title or Describe your change.</p>
+  <h3>Project search and sidebar tree</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Key</p></th><th><p>Context and result</p></th></tr>
+      <tr><td><p>Mod+K</p></td><td><p>Open project search, except when Markdown Monaco owns the command chord.</p></td></tr>
+      <tr><td><p>Enter in search</p></td><td><p>Search page content when the query has at least two characters.</p></td></tr>
+      <tr><td><p>Up / Down</p></td><td><p>With a sidebar tree entry focused, move to the previous or next visible entry.</p></td></tr>
+      <tr><td><p>Home / End</p></td><td><p>Focus the first or last visible sidebar entry.</p></td></tr>
+      <tr><td><p>Right</p></td><td><p>Expand a focused folder; if already expanded, focus its first child.</p></td></tr>
+      <tr><td><p>Left</p></td><td><p>Collapse an expanded folder, or focus the entry's parent.</p></td></tr>
+      <tr><td><p>Enter</p></td><td><p>Open a focused page or the focused folder's index.</p></td></tr>
+      <tr><td><p>Space</p></td><td><p>Toggle a focused folder; open a focused page.</p></td></tr>
+      <tr><td><p>F2</p></td><td><p>Open Rename or move for the focused entry when you have write access.</p></td></tr>
+      <tr><td><p>Delete</p></td><td><p>Open the focused entry's deletion preview when you have write access. Confirmation is still required.</p></td></tr>
+    </tbody>
+  </table>
+  <h3>New-page folder picker</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Key</p></th><th><p>Result inside the open folder picker</p></th></tr>
+      <tr><td><p>Up / Down</p></td><td><p>Move between visible folders.</p></td></tr>
+      <tr><td><p>Home / End</p></td><td><p>Focus Project root or the last visible folder.</p></td></tr>
+      <tr><td><p>Right / Left</p></td><td><p>Expand and enter a folder, or collapse it and return to its parent.</p></td></tr>
+      <tr><td><p>Enter / Space</p></td><td><p>Select the focused folder and close the picker.</p></td></tr>
+      <tr><td><p>Escape</p></td><td><p>Close the picker.</p></td></tr>
+    </tbody>
+  </table>
+  <p>The Rename or move dialog uses its own Folder select control. The tree shortcuts above refer to the new-page folder picker.</p>
+  <h3>Rich text and ordinary document blocks</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Key</p></th><th><p>Result in the rich editor</p></th></tr>
+      <tr><td><p>Mod+S</p></td><td><p>Save the page. During a save, further save requests are ignored and the app disables editing.</p></td></tr>
+      <tr><td><p>Mod+Z</p></td><td><p>Undo a document edit.</p></td></tr>
+      <tr><td><p>Mod+Shift+Z or Mod+Y</p></td><td><p>Redo a document edit.</p></td></tr>
+      <tr><td><p>Mod+B / Mod+I / Mod+U</p></td><td><p>Toggle bold, italic, or underline on selected text or subsequent typing.</p></td></tr>
+      <tr><td><p>Mod+Shift+S / Mod+E</p></td><td><p>Toggle strikethrough or inline code.</p></td></tr>
+      <tr><td><p>Mod+Alt+1 through Mod+Alt+6</p></td><td><p>Toggle the corresponding heading level.</p></td></tr>
+      <tr><td><p>Mod+Alt+0</p></td><td><p>Change the current block to an ordinary paragraph.</p></td></tr>
+      <tr><td><p>Mod+Shift+7 / Mod+Shift+8 / Mod+Shift+9</p></td><td><p>Toggle a numbered list, bullet list, or checklist.</p></td></tr>
+      <tr><td><p>Mod+Shift+B</p></td><td><p>Toggle a blockquote.</p></td></tr>
+      <tr><td><p>Mod+Alt+C</p></td><td><p>Toggle a code block from the rich document.</p></td></tr>
+      <tr><td><p>Mod+Shift+L / E / R / J</p></td><td><p>Set alignment to left, center, right, or justified.</p></td></tr>
+      <tr><td><p>Shift+Enter</p></td><td><p>Insert a line break within the current text block.</p></td></tr>
+      <tr><td><p>Tab in prose</p></td><td><p>Insert a tab stop equivalent to four character widths.</p></td></tr>
+      <tr><td><p>Tab / Shift+Tab in a list</p></td><td><p>Indent or outdent the current bullet, numbered item, or checklist item.</p></td></tr>
+      <tr><td><p>Shift+Tab in prose</p></td><td><p>Decrease paragraph indentation.</p></td></tr>
+      <tr><td><p>Mod+] / Mod+[</p></td><td><p>Increase or decrease paragraph indentation, from zero to eight levels.</p></td></tr>
+      <tr><td><p>Tab / Shift+Tab in a table</p></td><td><p>Move between table cells.</p></td></tr>
+      <tr><td><p>Mod+Enter</p></td><td><p>Add a paragraph at the end of the document and move there; useful for leaving a nested layout.</p></td></tr>
+      <tr><td><p>Escape</p></td><td><p>Release rich-editor focus.</p></td></tr>
+      <tr><td><p>Enter in Font size</p></td><td><p>Apply a valid size from 8 to 144 pixels. Leaving the field also applies it.</p></td></tr>
+      <tr><td><p>Enter / Escape in Link URL</p></td><td><p>Apply the link, or close the link editor and return focus to the document.</p></td></tr>
+    </tbody>
+  </table>
+  <p>These keys act on the focused editor. They do not make the visual editor a Markdown source editor. Use toolbar controls for operations without a listed shortcut; the <a href="10-rich-text-and-layouts.html">Rich text and layouts</a> guide covers each control.</p>
+  <h3>Code blocks inside rich documents</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Key</p></th><th><p>Result while editing a code block</p></th></tr>
+      <tr><td><p>Enter</p></td><td><p>Insert a newline, including on an empty line.</p></td></tr>
+      <tr><td><p>Tab / Shift+Tab</p></td><td><p>Indent by two spaces or outdent the code.</p></td></tr>
+      <tr><td><p>Mod+Enter</p></td><td><p>Move to a paragraph immediately after this code block, including inside a column or tab panel.</p></td></tr>
+      <tr><td><p>Escape</p></td><td><p>Move focus to the block's Copy code button so you can leave the code editor.</p></td></tr>
+      <tr><td><p>Mod+Z</p></td><td><p>Undo using the surrounding document's history.</p></td></tr>
+      <tr><td><p>Mod+Shift+Z or Mod+Y</p></td><td><p>Redo using the surrounding document's history.</p></td></tr>
+      <tr><td><p>Mod+S</p></td><td><p>Save the page containing the code block.</p></td></tr>
+      <tr><td><p>Mod+C</p></td><td><p>Copy selected code. The Copy code button copies the whole block.</p></td></tr>
+    </tbody>
+  </table>
+  <p>The code editor provides syntax highlighting and text editing, not code execution. In reading mode you can select and copy code, while edit-only controls are hidden.</p>
+  <h3>Markdown source editor</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Key</p></th><th><p>Result while Markdown Monaco has focus</p></th></tr>
+      <tr><td><p>Mod+S</p></td><td><p>Save the raw Markdown page.</p></td></tr>
+      <tr><td><p>Mod+Z / Mod+Shift+Z</p></td><td><p>Undo or redo source edits using Monaco's own history.</p></td></tr>
+      <tr><td><p>Mod+F</p></td><td><p>Find text inside this Markdown document.</p></td></tr>
+      <tr><td><p>Ctrl+H on Windows/Linux; Cmd+Option+F on macOS</p></td><td><p>Open source find and replace.</p></td></tr>
+      <tr><td><p>F1</p></td><td><p>Open the command palette to find editing, selection, indentation, and other Monaco commands.</p></td></tr>
+      <tr><td><p>Ctrl+G on Windows/Linux and macOS</p></td><td><p>Go to a line in the source.</p></td></tr>
+      <tr><td><p>Tab / Shift+Tab</p></td><td><p>Indent or outdent source while Tab is in editing mode.</p></td></tr>
+      <tr><td><p>Ctrl+M on Windows/Linux; Ctrl+Shift+M on macOS</p></td><td><p>Toggle whether Tab edits indentation or moves focus out of the source editor.</p></td></tr>
+      <tr><td><p>Mod+K followed by a command key</p></td><td><p>Use Monaco command chords. This context does not open project search.</p></td></tr>
+    </tbody>
+  </table>
+  <p>Monaco also provides multiple cursors, line operations, code folding, and selection commands. Use F1 or its context menu to discover available commands and their platform-specific keys. Plain-editor fallback mode supports ordinary text entry and saving but does not provide Monaco's full command set.</p>
+  <p>Source find/replace searches the current editor buffer. <strong>Search pages</strong> searches the project. To read the rendered Markdown, save and return to reading view; there is no simultaneous Markdown preview toggle.</p>
+  <h3>Content tabs and column dividers</h3>
+  <table>
+    <tbody>
+      <tr><th><p>Focused control</p></th><th><p>Keys and result</p></th></tr>
+      <tr><td><p>Content tab button</p></td><td><p>Left / Right switches to the previous or next tab, wrapping at the ends. Home / End selects the first or last tab.</p></td></tr>
+      <tr><td><p>Column resize divider</p></td><td><p>Left / Right changes adjacent column widths in two-percentage-point steps, within the supported limits.</p></td></tr>
+      <tr><td><p>Column resize divider with pointer</p></td><td><p>Drag to resize. Double-click to reset the column group to equal widths.</p></td></tr>
+    </tbody>
+  </table>
+  <p>Switching a content tab changes which panel you see. It does not reorder tabs or alter their content. Use <strong>Rename active tab</strong> to reveal tab-name and left/right reorder controls. Use the column or tab controls to add or remove items; removed content can be restored with document Undo before it leaves that editing history.</p>
+  <h2>If a shortcut does something unexpected</h2>
+  <ol>
+    <li><p>Check which control currently has focus. A browser address bar, page-title field, tree row, and code editor have different key handling.</p></li>
+    <li><p>Use the visible action button once to confirm the operation you need.</p></li>
+    <li><p>For Markdown commands, use F1 to inspect the editor's command and key binding. For project search while editing Markdown, choose the sidebar or header search button.</p></li>
+    <li><p>For save failures, read the error and preserve your draft before retrying; see <a href="05-troubleshooting.html">Troubleshooting</a>.</p></li>
+  </ol>
+  <p>Continue with <a href="13-navigation-and-search.html">Navigation and search</a> or <a href="02-writing-pages.html">Writing and saving pages</a>.</p>
+</body>
+</html>

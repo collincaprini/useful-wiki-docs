@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Troubleshooting</title>
+</head>
+<body>
+  <p>If something fails while you are editing, preserve your work before reloading, signing out, or closing the tab. Useful Wiki keeps browser drafts, but those drafts are not permanent backups and are not synchronized between devices.</p>
+  <h2>A page will not save</h2>
+  <ol>
+    <li><p>Read the error displayed under the editor. A failed save leaves your current edits available.</p></li>
+    <li><p>Choose <strong>Download draft</strong> in the error panel. Keep the downloaded HTML, Markdown, or rich JSON file until the intended changes are safely saved.</p></li>
+    <li><p>Check whether the message concerns a changed file, authorization, branch rules, document size, or an unfinished image upload. Follow the matching section below.</p></li>
+    <li><p>After resolving the cause, review the current page and choose <strong>Save to repository</strong> again. Look for <strong>Saved to GitHub. View commit</strong> before treating the change as published.</p></li>
+  </ol>
+  <p><strong>Download draft</strong> appears after a save error; it is not a permanent toolbar action. If browser draft storage is full before a save error appears, keep the tab open and copy content you need into another document.</p>
+  <img src="assets/screenshots/34-failed-save.jpg" alt="Local-preview editor showing the validation error HTML pages need a title between 1 and 200 characters, with Download draft available" width="960">
+  <p><em>Trying to save an HTML page with an empty title in the local preview produces a validation error and exposes Download draft. Restore a valid title before saving again; this example did not publish a GitHub change.</em></p>
+  <h3>The file changed on GitHub</h3>
+  <p>Useful Wiki saves against the revision you originally opened. Another browser, collaborator, or repository edit can change that file before you save. A conflict stops the save instead of silently replacing the newer file.</p>
+  <ol>
+    <li><p>Download your draft before reloading.</p></li>
+    <li><p>Open the latest repository version and compare it with the downloaded draft.</p></li>
+    <li><p>Reconcile both sets of changes, then edit the latest page revision with the result.</p></li>
+    <li><p>Save again and inspect the resulting commit.</p></li>
+  </ol>
+  <p>There is no automatic merge interface. Repeatedly saving the old draft does not resolve the conflict. Reloading a newer revision also does not automatically apply a draft associated with the older one. See <a href="06-editing-from-your-repository.html">Editing from your repository</a> if you prefer to reconcile files with Git tools.</p>
+  <h2>Recover an unsaved draft</h2>
+  <ol>
+    <li><p>Return to the same project and page in the same browser tab while signed in as the same user.</p></li>
+    <li><p>Open <strong>Edit page</strong>. When the stored draft matches the opened revision, the editor displays <strong>Your unsaved draft from this tab has been restored.</strong></p></li>
+    <li><p>Review the title and content, including every content tab, and save when ready.</p></li>
+  </ol>
+  <p>Drafts are associated with your user, project, path, and original file revision. Unpublished new pages can also be recovered from that tab's session. The change-description field is not restored. A successful save clears the draft for that revision.</p>
+  <p><strong>Cancel</strong> returns to reading and can ask you to confirm leaving unsaved work; it does not publish those changes. Browser navigation and reloads can also warn about unsaved work. Signing out clears Useful Wiki session drafts. Successful deletion clears drafts for affected pages. Save or copy needed content before either action.</p>
+  <h3>The demo forgot my edits</h3>
+  <p>Saved demo pages and folders use storage in the current browser. Unsaved drafts use the current tab's session. Clearing browser data, using another browser or device, or sharing a demo link does not carry your local edits with you. Use a connected repository for shared, published work.</p>
+  <h2>Sign-in expired or access was revoked</h2>
+  <ol>
+    <li><p>If a save failed, download the draft first.</p></li>
+    <li><p>Choose <strong>Sign in</strong> or <strong>Sign in with GitHub</strong> and complete authorization with the account that has repository access.</p></li>
+    <li><p>Open the project again and check the latest page before reapplying any preserved changes.</p></li>
+  </ol>
+  <p>Sessions last at most eight hours, or less if the provider authorization expires sooner. Useful Wiki asks you to sign in again instead of refreshing indefinitely. Changing accounts does not grant access to drafts belonging to another user.</p>
+  <h2>A repository or project is missing</h2>
+  <ol>
+    <li><p>Check that you are using the correct GitHub account and can open the repository directly in GitHub.</p></li>
+    <li><p>When choosing a repository under <strong>New project</strong>, use <strong>Load more repositories</strong> if it is not in the currently loaded list. The filter searches loaded entries.</p></li>
+    <li><p>Check any organization approval or SSO authorization required for the OAuth app.</p></li>
+    <li><p>Confirm that the repository has been registered as a Useful Wiki project. A repository's existence alone does not create that registration.</p></li>
+  </ol>
+  <p>A new registration requires write access. An already registered repository opens its shared project rather than creating another project with different settings. Archived repositories cannot be newly selected for writing. Public projects can be read by anonymous visitors through a direct link; private projects require the visitor's GitHub access.</p>
+  <p>On <strong>This project isn't available</strong>, use <strong>All projects</strong> to return to the dashboard or <strong>Sign in with GitHub</strong> to authorize access. A not-found response can mean either a missing repository or insufficient access. See <a href="04-sharing-and-access.html">Sharing and access</a>.</p>
+  <h2>A page or folder cannot be opened</h2>
+  <ol>
+    <li><p>From <strong>We couldn't open this location</strong>, choose <strong>Back to project</strong> and look for the current entry.</p></li>
+    <li><p>Check whether the file or folder was renamed, moved, or deleted. Old links are not automatically rewritten by a move.</p></li>
+    <li><p>Check the project's selected branch and configured content folder. The page must exist inside that folder on that branch.</p></li>
+    <li><p>If the page exists but still cannot be read, check its format and size using the limits below.</p></li>
+  </ol>
+  <p>Page addresses retain the full file path and extension. Changing only the displayed title does not change the address. The shared asset directory is intentionally excluded from page navigation and search.</p>
+  <h2>I can read but cannot edit or save</h2>
+  <p>Editing actions require GitHub write access, and archived repositories are read-only. A user's ability to read a private project does not imply permission to change it.</p>
+  <ol>
+    <li><p>Check repository write permission, organization authorization, and whether the repository is archived.</p></li>
+    <li><p>Check the branch shown in the sidebar against GitHub's branch rules. A protected branch may require a pull request and reject a direct commit.</p></li>
+    <li><p>If the branch requires a different workflow, make the change through the repository's GitHub process and reload the published result in Useful Wiki.</p></li>
+  </ol>
+  <p>Useful Wiki does not bypass branch protection or provide a pull request interface. Project settings cannot currently be edited in the app, so do not look for a branch-switching settings control. A save error can also indicate that a newly created file path already exists; choose a unique path or edit the existing page.</p>
+  <h2>An image will not upload or display</h2>
+  <ol>
+    <li><p>Use a supported PNG, JPEG, GIF, WebP, or AVIF file no larger than 900,000 bytes. Resize or compress larger images before adding them.</p></li>
+    <li><p>Wait for <strong>Adding image…</strong> to finish before saving. If the placeholder says <strong>Image could not be added</strong> or the upload was interrupted, remove that placeholder and add the image again.</p></li>
+    <li><p>Check repository write access and branch rules if the upload is rejected. Image uploads create their own commits.</p></li>
+    <li><p>If an existing image is missing after a move, check the relative image path against the page's new folder.</p></li>
+  </ol>
+  <p>Uploads go into the shared <code>assets</code> directory beneath the project's content root. Canceling the page edit or removing its image does not delete an already uploaded repository file. Private image access follows repository authorization. SVG and executable image content are not supported.</p>
+  <p>Markdown source mode does not show the rich image-upload controls. Add a portable image reference to an existing repository asset, or use the repository workflow described in <a href="11-images-and-links.html">Images and links</a>.</p>
+  <h2>A rename, move, or deletion failed</h2>
+  <ol>
+    <li><p>Save or cancel active edits inside an item before renaming or moving it.</p></li>
+    <li><p>Choose an existing destination folder inside the configured content root. Avoid occupied paths, a folder's own descendants, and file-format changes.</p></li>
+    <li><p>If the destination already has a local draft, open and resolve that draft first.</p></li>
+    <li><p>If the previewed file or folder changed, inspect its current contents and reopen the operation's preview before trying again.</p></li>
+  </ol>
+  <p>The configured content root cannot be deleted. Folder operations include all descendants, including images and files absent from navigation. Successful moves preserve file contents, so update inbound links and relative links or images manually. See <a href="03-organizing-pages.html">Organizing pages</a> for the complete workflows.</p>
+  <h2>Search or backlinks look incomplete</h2>
+  <p>Typing in search filters current titles and paths. Enter at least two characters and choose <strong>Search content</strong> to inspect page bodies. Search and backlink discovery scan up to 60 supported pages on demand and report partial results. Invalid or oversized pages can also make a scan incomplete.</p>
+  <p>Backlinks are available in Wiki mode through <strong>Find pages that link here</strong>. Discovery recognizes repository page paths; full hosted URLs may open correctly without appearing in those lists. There is no background content index. See <a href="13-navigation-and-search.html">Navigation and search</a>.</p>
+  <h2>Clipboard, editor, or network controls fail</h2>
+  <ul>
+    <li><p><strong>Copy as Markdown:</strong> if clipboard access is blocked, copy the selected text from the <strong>Copy page</strong> dialog.</p></li>
+    <li><p><strong>Copy link:</strong> copy the address from the browser if the clipboard action fails. For code, select the code and use Ctrl+C or Cmd+C.</p></li>
+    <li><p><strong>Monaco fails to load:</strong> a plain editor remains available for Markdown or code. Preserve your text and save normally; syntax highlighting and richer editing commands may be unavailable until loading succeeds.</p></li>
+    <li><p><strong>GitHub rate limiting or a temporary service error:</strong> preserve any draft, wait, then retry. Anonymous reading uses GitHub's unauthenticated rate limits.</p></li>
+    <li><p><strong>Fullscreen fails:</strong> retry through the fullscreen button, dismiss its error, or keep working in the normal window. Unsupported browsers show a disabled control.</p></li>
+  </ul>
+  <h2>Current limits and unsupported workflows</h2>
+  <ul>
+    <li><p>Documents are limited to 700,000 bytes. Split large pages into smaller linked documents. Images are separate files with a 900,000-byte upload limit.</p></li>
+    <li><p>The repository browser rejects a recursive file tree that GitHub reports as truncated. Use a smaller documentation repository; selecting a narrow content folder does not avoid the initial whole-repository tree request.</p></li>
+    <li><p>Supported pages are HTML, Markdown, and existing version-1 <code>.wiki.json</code> documents. Marked HTML uses format version <code>1</code> and a title of 1–200 characters. Arbitrary website HTML, MDX execution, scripts, iframes, and executable embeds are unsupported.</p></li>
+    <li><p>Use an ordinary GitHub repository. GitHub's built-in <code>.wiki.git</code> repository is not the target format.</p></li>
+    <li><p>There is no automatic merge, live co-editing, suggestions flow, pull request interface, project settings editor, or custom-domain setup in the app.</p></li>
+  </ul>
+  <p>For an installation that cannot sign in at all, its operator can use <a href="07-running-locally.html">Running locally and deployment setup</a>. Return to <a href="02-writing-pages.html">Writing and saving pages</a> once the issue is resolved.</p>
+</body>
+</html>

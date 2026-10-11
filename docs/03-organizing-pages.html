@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Organizing pages</title>
+</head>
+<body>
+  <p>Pages and folders in useful-wiki follow the files in your GitHub repository. This guide covers browsing that structure and organizing the repository. You need repository write access to create, rename, move, or delete files.</p>
+  <h2>Browse pages and folder indexes</h2>
+  <ol>
+    <li><p>Open a project and find <strong>Pages</strong> in its sidebar. On a small screen, choose <strong>Open navigation</strong> in the header first.</p></li>
+    <li><p>Choose a page to read it. Hover over a sidebar label to see its repository path.</p></li>
+    <li><p>Click a folder's chevron to expand or collapse it. Click the folder name to open its index of immediate subfolders and pages.</p></li>
+    <li><p>Use the breadcrumbs above the content to return to the project overview or a parent folder.</p></li>
+  </ol>
+  <p>Folder indexes are generated automatically; you do not need to maintain index files. You can copy a folder's browser address, reload it, or return with the browser's Back and Forward buttons. Opening a page from search or a document link reveals its parent folders in the sidebar.</p>
+  <img src="assets/screenshots/11-folder-index.jpg" alt="Local preview showing the releases folder index, its Release checklist page, and the project breadcrumb" width="960">
+  <p><em>The releases folder index in the local preview shows one page and a New page action. The breadcrumb and sidebar identify the current folder.</em></p>
+  <p>For project switching, search, heading navigation, previous and next pages, and wiki links, see <a href="13-navigation-and-search.html">Navigation and search</a>. For sidebar display, themes, fullscreen, and keyboard controls, see <a href="14-appearance-and-shortcuts.html">Appearance and shortcuts</a>.</p>
+  <h2>Create a folder</h2>
+  <ol>
+    <li><p>Find <strong>Project root</strong> or the parent folder in the sidebar.</p></li>
+    <li><p>Hover over it or focus it with the keyboard and choose its <strong>New folder</strong> action. Actions remain visible on touch devices.</p></li>
+    <li><p>In <strong>Create a folder</strong>, enter a <strong>Folder name</strong>, such as <code>guides</code>.</p></li>
+    <li><p>Choose <strong>Create folder</strong>. The folder is saved immediately on the project's branch and appears in the tree.</p></li>
+  </ol>
+  <p>Empty folders remain visible through a hidden <code>.gitkeep</code> placeholder. Choose an unused name inside the configured content root. The shared <code>assets</code> folder at that root is reserved for uploaded images and is hidden from navigation and folder pickers.</p>
+  <img src="assets/screenshots/08-create-folder.jpg" alt="Create a folder dialog in the local preview with Folder name, Cancel, and Create folder controls" width="960">
+  <p><em>Enter a name in Create a folder. This dialog is shown in the local preview, where folder changes stay in the browser.</em></p>
+  <h3>Create a page in the right folder</h3>
+  <ol>
+    <li><p>Choose a folder's <strong>New page</strong> action, or open its index and choose <strong>New page</strong>. That folder is selected automatically.</p></li>
+    <li><p>In <strong>A new page</strong>, enter a title and choose HTML or Markdown.</p></li>
+    <li><p>To change the destination, open <strong>Folder</strong>, expand the folder tree, and select a folder or <strong>Project root</strong>. Empty folders are included.</p></li>
+    <li><p>Enter the separate <strong>Filename</strong> and check the resulting <strong>Location</strong>.</p></li>
+    <li><p>Choose <strong>Start writing</strong>, then save the page when it is ready.</p></li>
+  </ol>
+  <p>The bottom sidebar <strong>New page</strong> action is also available. Starting a page opens a draft; saving publishes it. See <a href="02-writing-pages.html">Writing pages</a> for all editor tools and the save flow.</p>
+  <img src="assets/screenshots/04-page-folder-picker.jpg" alt="New page dialog for Release checklist with its Folder picker expanded to Project root, guides, and reference" width="960">
+  <p><em>The new-page Folder picker in the local preview is open before a destination is chosen. Select a folder, then review the filename and location before starting the draft.</em></p>
+  <h2>Choose the page order</h2>
+  <p>Folders appear before pages. Within each level, entries are sorted by filename. Use consistent, zero-padded prefixes such as <code>01-introduction.html</code> and <code>02-next-steps.html</code> when order matters. There is no separate navigation-order editor.</p>
+  <p>The page title and filename are separate. Initial sidebar labels make filenames readable by removing numeric prefixes and replacing hyphens and underscores with spaces. Opening a page loads its authored title. Changing a title does not rename the file or change its address.</p>
+  <h2>Rename a page or folder</h2>
+  <ol>
+    <li><p>Save or cancel active edits inside the file or folder you want to change.</p></li>
+    <li><p>Hover over the sidebar entry and choose the pencil action, or focus the entry and press F2.</p></li>
+    <li><p>In <strong>Rename or move</strong>, change <strong>Name</strong>. Keep the file's document format and extension.</p></li>
+    <li><p>Check <strong>Destination path</strong>. For a folder, expand the included-file count to review its contents.</p></li>
+    <li><p>Choose <strong>Rename file</strong> or <strong>Rename folder</strong>.</p></li>
+  </ol>
+  <p>To change only the displayed page title, edit the page instead. HTML and rich pages have a Page title field; Markdown uses its first level-one heading.</p>
+  <img src="assets/screenshots/09-move-page.jpg" alt="Rename or move file dialog showing release-checklist.html in the guides folder and its current destination path" width="960">
+  <p><em>The local-preview Rename or move dialog initially shows the existing filename and folder. Change Name to rename it or Folder to prepare a move; this screenshot does not show a completed move.</em></p>
+  <h2>Move a page or folder</h2>
+  <ol>
+    <li><p>Save or cancel active edits inside the item, then open its <strong>Rename or move</strong> dialog.</p></li>
+    <li><p>Choose the destination from <strong>Folder</strong>. Leave <strong>Name</strong> unchanged unless you also want to rename it.</p></li>
+    <li><p>Review the destination and, for a folder, the included files.</p></li>
+    <li><p>Choose <strong>Move file</strong> or <strong>Move folder</strong>.</p></li>
+  </ol>
+  <p>You can also drag an entry onto another folder, including a collapsed folder, or onto Project root. Dropping it opens the same dialog with that destination selected; review and confirm the move there.</p>
+  <p>A folder move includes every descendant, including images and files not listed as pages. The current address, breadcrumbs, sidebar, and stored drafts follow a successful move. Existing destinations, missing folders, destinations outside the content root, and moves into the item's own descendants are rejected.</p>
+  <p><strong>Update affected links after a move or rename.</strong> File contents remain unchanged. Check links pointing to the old address and relative links or images that cross the changed folder boundary.</p>
+  <h2>Delete a page or folder</h2>
+  <ol>
+    <li><p>Save or copy any draft content you want to keep. Successful deletion also discards local drafts for affected pages.</p></li>
+    <li><p>Choose the entry's trash action, or focus the entry and press Delete.</p></li>
+    <li><p>Wait for the dialog to check files, then review the complete list under the file count.</p></li>
+    <li><p>Choose <strong>Delete file</strong> or <strong>Delete folder</strong>, or choose <strong>Cancel</strong> to keep everything.</p></li>
+  </ol>
+  <p>Folder deletion includes every descendant, including images and other files absent from the page list. The configured content root cannot be deleted. Each successful repository deletion creates a commit, and deleted files can be restored through GitHub history. Demo deletion changes only this browser's preview.</p>
+  <img src="assets/screenshots/10-delete-folder-preview.jpg" alt="Local-preview Delete folder confirmation listing release-checklist.html and .gitkeep inside docs/releases, with Cancel focused" width="960">
+  <p><em>Review every listed file before confirming a folder deletion. This local-preview dialog was canceled; the screenshot documents the preview, not a performed deletion.</em></p>
+  <p>Rename, move, and delete operations check the revision you reviewed. If files change before the operation finishes, a conflict prevents overwriting that newer state. Read the error and inspect the latest files before trying again; see <a href="05-troubleshooting.html">Troubleshooting</a>.</p>
+  <p>Continue with <a href="04-sharing-and-access.html">Sharing and access</a>, or return to <a href="00-welcome.html">Welcome</a>.</p>
+</body>
+</html>

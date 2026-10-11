@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Navigation and search</title>
+</head>
+<body>
+  <p>Useful Wiki offers both a documentation reading path and a wiki exploration view. Both use the same repository pages, folder tree, search, and internal links. Use this guide to find a page, move through it, and discover related information.</p>
+  <h2>Find or change projects</h2>
+  <ol>
+    <li><p>On the dashboard, choose <strong>All projects</strong>, <strong>Documentation</strong>, or <strong>Wikis</strong> to filter project cards by mode.</p></li>
+    <li><p>Use the dashboard's project search to filter the available cards by name, description, or repository owner/name.</p></li>
+    <li><p>Open a project card to enter its workspace.</p></li>
+    <li><p>To return, open the project name menu near the top of the sidebar and choose <strong>All projects</strong>.</p></li>
+  </ol>
+  <p>The project menu in a local preview also links to the other example project. Anonymous visitors see example projects on the dashboard; a direct link can open a registered public project. Private project access depends on the visitor's GitHub account.</p>
+  <img src="assets/screenshots/28-project-switcher.jpg" alt="Fieldnotes project menu open in local preview with All projects and Team handbook options" width="960">
+  <p><em>Open the project name menu to return to All projects. The local preview also offers Team handbook as another example to explore.</em></p>
+  <h2>Browse the folder tree and overview</h2>
+  <ol>
+    <li><p>Find <strong>Pages</strong> in the sidebar. On a small screen, open the header's navigation menu first.</p></li>
+    <li><p>Click a chevron to expand or collapse a folder. Click a page label to read it.</p></li>
+    <li><p>Click a folder name to open its generated index, or follow the breadcrumbs to return to a parent folder.</p></li>
+    <li><p>Click the project breadcrumb to open the project overview and its folder links and page cards.</p></li>
+  </ol>
+  <p>Hover over an entry to see its repository path. Folder names and filenames determine ordering; page labels may initially come from filenames until a page's authored title has been loaded. Opening a page through search or a document link expands its parent folders automatically.</p>
+  <p>Folder indexes show immediate subfolders and pages without creating index files in GitHub. The project overview lists available pages and, when present, its top-level folders. Creating and reorganizing entries is covered in <a href="03-organizing-pages.html">Organizing pages</a>.</p>
+  <h3>Use addresses and browser history</h3>
+  <p>A page address contains its repository owner, repository name, and full file path, including the extension. Folder indexes have their own addresses, and the project overview uses <code>?view=project</code>. You can reload these locations or return to them with the browser's Back and Forward buttons.</p>
+  <p>Changing a displayed title does not change its address. Renaming or moving the file does. If you follow an old link and the location is unavailable, choose <strong>Back to project</strong> and look for the current entry. Save or preserve active edits before leaving a page when the app asks you to confirm.</p>
+  <h2>Follow the documentation reading path</h2>
+  <ol>
+    <li><p>Open a page in a Documentation project.</p></li>
+    <li><p>Read the page, then scroll to the navigation cards beneath its content.</p></li>
+    <li><p>Choose <strong>Previous</strong> or <strong>Next</strong> to open the adjacent page. A card appears only when that adjacent page exists.</p></li>
+  </ol>
+  <p>The sequence follows the project's page list and file-path order. Numbered filenames are useful for a deliberate reading sequence. These cards appear in reading view, not while editing.</p>
+  <h2>Jump to a heading</h2>
+  <ol>
+    <li><p>While reading on a wide screen, find <strong>On this page</strong> to the right of the document.</p></li>
+    <li><p>Choose a heading to jump to that section.</p></li>
+    <li><p>If the heading belongs to an inactive content tab, the app opens the appropriate tab before scrolling.</p></li>
+  </ol>
+  <p>The outline is generated from headings in HTML, Markdown, and rich documents, including levels 1–6 and headings nested in supported layouts. It uses readable text, so inline bold or italic styling does not appear as markup in the label. Code-block contents and tab labels are not treated as document headings.</p>
+  <p>Heading anchors usually come from the displayed heading text. Repeated headings receive distinct anchors, and explicit heading IDs are preserved. To share a section, copy its heading link address. If you change heading text later, review links to that section.</p>
+  <p>The outline is hidden on narrower screens and while editing. The page itself remains readable, including its tabs and code blocks.</p>
+  <img src="assets/screenshots/02-page-reader.jpg" alt="Local-preview page with folder navigation on the left and On this page and Keep exploring links on the right" width="960">
+  <p><em>On a wide screen, the local-preview reader displays its heading outline and recognized outgoing page links beside the document.</em></p>
+  <h2>Search titles and paths</h2>
+  <ol>
+    <li><p>Choose <strong>Search pages</strong> in the sidebar, the header's search icon, or the project overview's search box.</p></li>
+    <li><p>Alternatively, press Ctrl+K on Windows/Linux or Cmd+K on macOS while focus is outside the Markdown source editor.</p></li>
+    <li><p>In <strong>Find something useful</strong>, type the words you want. The list filters current page titles and repository paths immediately.</p></li>
+    <li><p>Choose a result to open that page and close the search dialog.</p></li>
+  </ol>
+  <p>Title and path filtering is useful when you know a name or folder. It does not inspect page bodies until you request a content search. The page-title list can still contain readable filename labels for pages that have not yet been opened.</p>
+  <h2>Search page content</h2>
+  <ol>
+    <li><p>Open the same search dialog and enter at least two characters.</p></li>
+    <li><p>Choose <strong>Search content</strong> or press Enter.</p></li>
+    <li><p>Review the matching page titles and content excerpts, then choose a result.</p></li>
+    <li><p>To try another phrase, change the query. The initial title/path list returns until you submit another content search.</p></li>
+  </ol>
+  <p>Search is limited to the current project. A content search scans up to 60 supported pages on demand. If some pages were not searched, the dialog displays a partial-results message. Pages that cannot be parsed or exceed the document size limit can also make the result incomplete.</p>
+  <img src="assets/screenshots/12-search-content.jpg" alt="Team handbook local-preview content search for work showing matching page excerpts and a count of five results" width="960">
+  <p><em>Searching for “work” in the Team handbook local preview returns five results with excerpts. Typing alone filters titles and paths; Search content performs the body search shown here.</em></p>
+  <p>A no-match result is not proof that a larger repository contains no matching text. Narrow your reading with the folder tree or inspect the repository directly when you need to cover pages outside the scan. Private search results require your GitHub repository access; there is no shared background content index.</p>
+  <p>While editing Markdown, Ctrl/Cmd+K is reserved for Monaco's own command chords. Use a project search button instead. For editor find/replace commands, see <a href="14-appearance-and-shortcuts.html">Appearance and shortcuts</a>.</p>
+  <h2>Explore connections in a wiki</h2>
+  <ol>
+    <li><p>In a Wiki project, choose <strong>Explore the wiki</strong> in the sidebar.</p></li>
+    <li><p>Browse the <strong>Start exploring</strong> cards or use <strong>Search all pages</strong>. Open a card to read its page.</p></li>
+    <li><p>Follow links in the document. On a wide screen, <strong>Keep exploring</strong> also lists recognized links to other project pages.</p></li>
+    <li><p>At the bottom of the page, choose <strong>Explore all pages</strong> to return to the overview.</p></li>
+  </ol>
+  <p><strong>Keep exploring</strong> is derived from links already present in the page; it is not an automatically generated recommendation list. It can appear in both Documentation and Wiki projects when recognized outgoing links exist.</p>
+  <img src="assets/screenshots/29-wiki-overview.jpg" alt="Team handbook local-preview wiki overview with Explore the wiki selected and Start exploring page cards" width="960">
+  <p><em>Explore the wiki opens the Team handbook overview in the local preview. Choose a page card or search to find the next page.</em></p>
+  <h3>Find pages that link here</h3>
+  <ol>
+    <li><p>Open a saved page in a connected Wiki project and scroll to its footer.</p></li>
+    <li><p>Choose <strong>Find pages that link here</strong>.</p></li>
+    <li><p>Choose a result under <strong>Pages that link here</strong> to open the referring page.</p></li>
+    <li><p>Read any message indicating that no other pages link here or that only part of the project was checked.</p></li>
+  </ol>
+  <p>Backlink discovery scans up to 60 supported pages. It is requested when you use the button, rather than maintained by a background crawler. Demo backlinks are calculated from the local sample pages and can appear without a lookup button.</p>
+  <img src="assets/screenshots/31-wiki-backlinks.jpg" alt="Welcome to the handbook page footer showing Pages that link here with How we work and Shared vocabulary links" width="960">
+  <p><em>The demo calculates backlinks from its local pages: How we work and Shared vocabulary link to this page. In a connected Wiki project, use Find pages that link here to request discovery.</em></p>
+  <p>Discovery recognizes repository-relative page links. A full hosted URL may still open the right page without being included in outgoing-link or backlink lists. Renamed or moved pages need their old links updated. Use <a href="04-sharing-and-access.html">Sharing and access</a> for the visual link workflow and <a href="06-editing-from-your-repository.html">Editing from your repository</a> for portable source links.</p>
+  <h2>Use the project footer</h2>
+  <p>The sidebar footer shows the selected branch and whether the repository is Public or Private. A connected project includes a link to its GitHub repository. <strong>Download repository editing guide</strong> downloads <code>USEFUL_WIKI.md</code> for people or coding agents editing repository files directly.</p>
+  <p>A demo instead says <strong>Example repository · local preview</strong>. Its saved changes belong to the current browser; a shared demo link does not publish your local edits.</p>
+  <p>Continue with <a href="14-appearance-and-shortcuts.html">Appearance and shortcuts</a>, or use <a href="05-troubleshooting.html">Troubleshooting</a> if a page or search cannot be loaded.</p>
+</body>
+</html>

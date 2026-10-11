@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Running locally</title>
+</head>
+<body>
+  <p>Run commands in the <code>useful-wiki</code> application checkout. This <code>useful-wiki-docs</code> repository contains documentation, not the application.</p>
+  <h2>Try the preview</h2>
+  <p>Install Node.js 24 and npm. From the application checkout, run:</p>
+  <pre><code class="language-bash">npm install
+npm run dev
+</code></pre>
+  <p>Open <a href="http://localhost:3001/demo">http://localhost:3001/demo</a>. No credentials are needed. Example edits and uploads stay in browser storage; they never write to GitHub or PocketBase. The dashboard at <code>http://localhost:3001</code> also identifies its example projects. Use this preview to work on navigation and editing before configuring real services.</p>
+  <img src="assets/screenshots/01-preview-dashboard.jpg" alt="Credential-free local preview dashboard with Fieldnotes and Team handbook example projects and a Local preview label" width="960">
+  <p><em>After starting the app, open /demo to reach this example-project dashboard. Save preview stores edits in the browser; Save to repository creates a Git commit once you work in a connected project.</em></p>
+  <h2>Connect your own services</h2>
+  <h3>GitHub and server configuration</h3>
+  <p>Create your own GitHub OAuth App in GitHub Developer settings. Use <code>http://localhost:3001</code> as its homepage and <code>http://localhost:3001/api/auth/github/callback</code> as its callback.</p>
+  <p>Create <code>.env.local</code> in the application root using the variable names in <code>.env.example</code>. Supply your own values:</p>
+  <table>
+    <tbody>
+      <tr><th><p>Variable</p></th><th><p>What to set</p></th></tr>
+      <tr><td><p><code>APP_URL</code></p></td><td><p><code>http://localhost:3001</code> for development. This origin must match the OAuth App configuration.</p></td></tr>
+      <tr><td><p><code>SESSION_SECRET</code></p></td><td><p>A random value of at least 32 characters, generated locally. Encrypts and signs login and OAuth cookies.</p></td></tr>
+      <tr><td><p><code>GITHUB_CLIENT_ID</code></p></td><td><p>Your GitHub OAuth App's client ID.</p></td></tr>
+      <tr><td><p><code>GITHUB_CLIENT_SECRET</code></p></td><td><p>Your GitHub OAuth App's client secret.</p></td></tr>
+      <tr><td><p><code>POCKETBASE_URL</code></p></td><td><p>Your own PocketBase address. Replace the example file's preconfigured URL; for the local setup below use <code>http://127.0.0.1:8090</code>.</p></td></tr>
+      <tr><td><p><code>POCKETBASE_SUPERUSER_EMAIL</code></p></td><td><p>Your PocketBase superuser email, paired with the password below.</p></td></tr>
+      <tr><td><p><code>POCKETBASE_SUPERUSER_PASSWORD</code></p></td><td><p>Your PocketBase superuser password.</p></td></tr>
+      <tr><td><p><code>POCKETBASE_SUPERUSER_TOKEN</code></p></td><td><p>Optional alternative to the PocketBase email/password pair. This is a PocketBase service credential, never a GitHub token.</p></td></tr>
+    </tbody>
+  </table>
+  <p>Generate <code>SESSION_SECRET</code> with:</p>
+  <pre><code class="language-bash">node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+</code></pre>
+  <p>Keep credentials server-only, outside Git, without a <code>NEXT_PUBLIC_</code> prefix. Keep the session secret stable across restarts; replacing it invalidates existing sessions. GitHub OAuth is configured in Next.js, not in PocketBase.</p>
+  <h3>Local PocketBase setup</h3>
+  <p>Download <a href="https://pocketbase.io/docs/">PocketBase</a> into a separate local directory, run <code>./pocketbase serve</code> (<code>.\pocketbase.exe serve</code> on Windows), and follow its installer link to create your superuser. The default address is <code>http://127.0.0.1:8090</code>; use that for <code>POCKETBASE_URL</code>.</p>
+  <p>In the app checkout, create the ignored file <code>.local/pocketbase-test.json</code> with your local values:</p>
+  <pre><code class="language-json">{
+  "url": "http://127.0.0.1:8090",
+  "email": "your-local-superuser@example.com",
+  "password": "replace-with-your-local-password"
+}
+</code></pre>
+  <p>Inspect the schema plan, then create missing collections and verify them:</p>
+  <pre><code class="language-bash">npm run db:setup -- --local-config=.local/pocketbase-test.json
+npm run db:setup -- --local-config=.local/pocketbase-test.json --apply --verify
+</code></pre>
+  <p>The first command is read-only. It reports compatible existing collections and missing collections. The second creates only missing collections, verifies fields, indexes, relations, and locked rules, then checks metadata operations using temporary records. Confirm that it reports successful verification and removal of those records. Incompatible existing schemas stop setup for review.</p>
+  <p>This local option requires <code>127.0.0.1</code>. Without it, the script targets a maintainer-specific allowlist and is not a general hosted installer. The application itself reads your <code>POCKETBASE_URL</code> from its environment; the JSON file is only for the setup and local integration scripts.</p>
+  <h3>Your own hosted PocketBase</h3>
+  <p>For a fresh hosted instance you own, place the app's <code>pb_migrations/1791504000_useful_wiki.js</code> in that instance's <code>pb_migrations</code> directory and restart PocketBase. Unapplied migrations run at startup; see <a href="https://pocketbase.io/docs/js-migrations/">PocketBase migrations</a>. PocketHost users can upload the file using <a href="https://pockethost.io/docs/ftp">SFTP</a>.</p>
+  <p>Choose one initialization method: API setup does not record this filename in migration history, so do not subsequently apply the same initial migration to that database. Keep later schema changes in separate migrations. Configure the app with your hosted instance's URL and its own service credentials.</p>
+  <h2>Sign in and deploy</h2>
+  <ol>
+    <li><p>Restart Next.js after changing environment variables.</p></li>
+    <li><p>Sign in with GitHub. The app requests <code>read:user</code> and <code>repo</code>; selecting a project does not narrow GitHub's broad <code>repo</code> scope. Your organization may require approval or SSO authorization.</p></li>
+    <li><p>Choose <strong>New project</strong>, select a repository you can write, and choose its branch, content folder, and Documentation or Wiki experience.</p></li>
+    <li><p>Open a page. To test publishing, use a repository you control: saving creates a real Git commit on the selected branch.</p></li>
+  </ol>
+  <img src="assets/screenshots/20-project-settings.jpg" alt="Signed-in project configuration form selecting Documentation mode, main branch, and docs content folder for useful-wiki-docs" width="960">
+  <p><em>After configuring your services and signing in, New project opens the repository setup flow. This real form shows the documentation repository's intended settings before Add project was submitted.</em></p>
+  <p>Production requires a Node.js host. Build and start the app with:</p>
+  <pre><code class="language-bash">npm run build
+npm start
+</code></pre>
+  <p>The start script listens on port 3001. Serve it through your deployed HTTPS origin and set that origin as <code>APP_URL</code> and the OAuth homepage; append <code>/api/auth/github/callback</code> for the callback. Production session cookies require HTTPS. Use a separate OAuth App for development, server environment variables for deployment credentials, and the same session secret across instances of one deployment.</p>
+  <h2>When setup fails</h2>
+  <ul>
+    <li><p><strong>OAuth callback errors:</strong> check the exact scheme, hostname, port, and callback path in your OAuth App and <code>APP_URL</code>, then restart Next.js.</p></li>
+    <li><p><strong>PocketBase connection or schema errors:</strong> confirm your own instance is running, credentials belong to it, and both application collections were initialized. Do not loosen their API rules to resolve an authentication failure.</p></li>
+    <li><p><strong>“Unexpected target” from setup:</strong> use the local configuration command above for <code>127.0.0.1</code>, or the migration method for your hosted instance.</p></li>
+    <li><p><strong>Save rejected:</strong> check your GitHub write access and branch protection. A revision conflict requires reconciling the preserved draft with the current file.</p></li>
+  </ul>
+  <p>Continue with <a href="08-architecture.html">architecture</a> and <a href="09-contributing.html">contributing</a>, or return to <a href="00-welcome.html">the docs home</a>.</p>
+</body>
+</html>

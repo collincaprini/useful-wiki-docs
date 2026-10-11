@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Editing from your repository</title>
+</head>
+<body>
+  <p>A Useful Wiki page is a repository file. You can edit it with the browser editor, a text editor, GitHub, or a coding agent. HTML pages have no synchronized JSON sidecar: the HTML file is the source of truth.</p>
+  <h2>Choose the right files</h2>
+  <ol>
+    <li><p>Read the repository's instructions, including <code>AGENTS.md</code>. Work on the project's configured branch and inside its content folder.</p></li>
+    <li><p>For this documentation set, the intended repository is <code>collincaprini/useful-wiki-docs</code>, branch <code>main</code>, content folder <code>docs</code>.</p></li>
+    <li><p>Change only the requested pages and assets. Review the diff, check links, and preview the result before committing.</p></li>
+    <li><p>Publish the changes to the branch read by the connected project, then reopen or reload the page in Useful Wiki.</p></li>
+  </ol>
+  <p>The sidebar's <strong>Download repository editing guide</strong> action downloads <code>USEFUL_WIKI.md</code> for another project or coding agent. Use the installed application's source when verifying a capability: <code>src/editor/extensions.ts</code> configures headings <code>h1</code> through <code>h6</code>, even if an older downloaded guide lists fewer levels.</p>
+  <h2>Use the version-1 HTML envelope</h2>
+  <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="useful-wiki-format" content="1"&gt;
+  &lt;title&gt;A useful page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Start with the answer.&lt;/p&gt;
+  &lt;h2&gt;Next steps&lt;/h2&gt;
+  &lt;p&gt;Read the &lt;a href="01-getting-started.html"&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  <p>Save UTF-8. Keep the format marker at <code>1</code> and the title between 1 and 200 characters. The app displays the title separately from the body, so a duplicate body heading is unnecessary. The filename determines the file path and URL; changing the title does not rename the file.</p>
+  <p>Put structural blocks on separate lines for readable diffs. Preserve prose spacing, inline marks, and code indentation. Escape text and attribute values correctly, including <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;quot;</code>. Keep each document within the 700 KB limit.</p>
+  <h2>Stay inside the document schema</h2>
+  <p>Use paragraphs, headings <code>h1</code>–<code>h6</code>, bold, italic, underline, strikethrough, links, inline code, lists, checklists, blockquotes, horizontal rules, tables, images, columns, and tabs. Preserve existing supported style and semantic <code>data-*</code> attributes. Arbitrary application HTML, scripts, external stylesheets, iframes, executable embeds, and SVG rendering are not supported.</p>
+  <p>Headings generate the page's contents navigation. Explicit heading IDs are preserved, while automatically generated anchors follow heading text and distinguish duplicates. Keep intentional IDs stable when other pages link to them.</p>
+  <h3>Code and portable references</h3>
+  <pre><code class="language-html">&lt;pre&gt;&lt;code class="language-python"&gt;print("hello")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;img src="assets/example.png" alt="A diagram of the save flow" width="480"&gt;
+&lt;p&gt;&lt;a href="guides/writing.html"&gt;Writing guide&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+  <p>Keep code whitespace intact. Store image files separately and use descriptive alternative text. Resolve image and page links relative to the current document; a nested page may need <code>../assets/example.png</code>. Do not save session-bound <code>/api/projects/...</code> image URLs into repository files. When moving a file or folder, update affected inbound links and relative asset paths.</p>
+  <img src="assets/screenshots/14-reader-tabs-and-code.jpg" alt="Fieldnotes Content formats page with Repository HTML tab selected, showing an HTML relative link in a code block and the rendered Sharing your work link below" width="960">
+  <p><em>In the local preview, open Content formats and select Repository HTML to compare a relative link's source with its rendered result. Save preview keeps edits in the browser; Save to repository publishes a commit in a connected project.</em></p>
+  <h3>Columns</h3>
+  <pre><code class="language-html">&lt;div data-type="columns" data-widths="[50,50]" style="display:grid;grid-template-columns:minmax(0,50fr) minmax(0,50fr);gap:24px"&gt;
+  &lt;div data-type="column"&gt;&lt;p&gt;Left column.&lt;/p&gt;&lt;/div&gt;
+  &lt;div data-type="column"&gt;&lt;p&gt;Right column.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+  <p>Use two to four columns. Keep one positive <code>data-widths</code> value per column, or <code>null</code> for equal widths. Preserve both the semantic attributes and layout styles.</p>
+  <h3>Tabs</h3>
+  <pre><code class="language-html">&lt;section data-type="tabs"&gt;
+  &lt;section data-type="tab-panel" data-label="Overview"&gt;
+    &lt;h4 data-tab-heading="" contenteditable="false"&gt;Overview&lt;/h4&gt;
+    &lt;div data-tab-content=""&gt;&lt;p&gt;Overview content.&lt;/p&gt;&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/section&gt;
+</code></pre>
+  <p>Use one to eight panels with labels up to 40 characters. Keep <code>data-label</code> and its fallback heading in agreement. Edit all relevant panels, including inactive ones; the active tab is presentation state rather than saved content.</p>
+  <h3>Tables and checklists</h3>
+  <p>Use <code>table</code>, <code>tbody</code>, <code>tr</code>, <code>th</code>, and <code>td</code>. Preserve cell <code>colspan</code>, <code>rowspan</code>, <code>colwidth</code>, and style attributes when editing text.</p>
+  <p>Checklists use <code>&lt;ul data-type="taskList"&gt;</code> with <code>&lt;li data-type="taskItem" data-checked="true"&gt;</code> or <code>data-checked="false"</code>. Item content belongs in the item's inner <code>div</code>. Keep existing checkbox-label markup when present.</p>
+  <h2>Preserve other file formats</h2>
+  <p>Markdown files stay Markdown, with their code fences, headings, tables, lists, and relative links. The first level-one heading supplies the displayed page title. HTML metadata applies only to HTML pages.</p>
+  <p>Existing <code>.wiki.json</code> pages contain a version-1 object with <code>title</code> and a Tiptap <code>document</code> tree. Renaming one to <code>.html</code> is not a conversion. The new-page dialog offers HTML and Markdown; it does not automatically migrate older pages.</p>
+  <h2>Coordinate with browser edits</h2>
+  <p>Browser saves use the file's original SHA. If a repository edit lands while someone is writing, their save may conflict. Preserve or download the draft, compare it with the latest repository file, and reconcile both changes. Do not silently replace the original revision to overwrite another person's work.</p>
+  <p>To share content with an LLM, <strong>Copy as Markdown</strong> includes the title and the whole document, including inactive tabs, columns, code, tables, and image references. It omits visual styling and embedded image bytes. If clipboard access is denied, the app offers selectable text for manual copying.</p>
+  <p>See <a href="09-contributing.html">contributing</a> for validation and repository boundaries, <a href="12-markdown-and-portable-files.html">Markdown and portable files</a> for format details, or return to <a href="00-welcome.html">the guide index</a>.</p>
+</body>
+</html>

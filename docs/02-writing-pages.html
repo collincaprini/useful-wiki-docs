@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Writing and saving pages</title>
+</head>
+<body>
+  <p>Write a page in Useful Wiki and save it directly to the project's GitHub branch. HTML pages use the visual editor; Markdown pages use the Monaco source editor. You need repository write access to see the creation and editing actions. Start with <a href="01-getting-started.html">Getting started</a> if you have not opened a project.</p>
+  <h2>Create a page</h2>
+  <ol>
+    <li><p>Click <strong>New page</strong> in the sidebar. To choose a destination first, open a folder or use the folder's <strong>New page</strong> action.</p></li>
+    <li><p>In <strong>A new page</strong>, enter a <strong>Title</strong> of up to 200 characters. The app suggests a lowercase, hyphenated filename from your title.</p></li>
+    <li><p>Choose <strong>HTML — visual editor</strong> or <strong>Markdown — Monaco editor</strong> under <strong>Format</strong>. HTML is the default. Markdown starts with a <code># Title</code> heading.</p></li>
+    <li><p>Choose an existing <strong>Folder</strong>. To create a folder, close this dialog and use the sidebar's <strong>New folder</strong> action first.</p></li>
+    <li><p>Review <strong>Filename</strong> and the <strong>Location</strong> preview. Enter only a filename, ending in <code>.html</code> or <code>.md</code>; choose its folder separately. Changing the extension switches the format. Once you edit the filename, subsequent title edits no longer replace your choice.</p></li>
+    <li><p>Click <strong>Start writing</strong>. This opens an unpublished page. It is not added to GitHub until you save.</p></li>
+  </ol>
+  <p>A new page cannot reuse an existing page's path, even with different capitalization, or use a folder's path. Paths cannot contain slashes in the filename, leading or trailing spaces, parent-directory segments, or reserved path characters. For ordering and later renaming, see <a href="03-organizing-pages.html">Organizing pages</a>.</p>
+  <img src="assets/screenshots/03-new-html-page.jpg" alt="A new page dialog in the local demo, with Title, HTML format, Folder, Filename, and Start writing controls." width="960">
+  <p><em>Local demo: start a page by choosing its title, format, folder, and filename.</em></p>
+  <img src="assets/screenshots/04-page-folder-picker.jpg" alt="The new-page Folder picker expanded to show Project root, guides, and reference in the local demo." width="960">
+  <p><em>Local demo: the Folder picker separates the destination folder from the filename.</em></p>
+  <h2>Edit an existing page</h2>
+  <ol>
+    <li><p>Open the page and click <strong>Edit page</strong>.</p></li>
+    <li><p>For HTML and older rich-text pages, edit <strong>Page title</strong> and click the document body to write. Changing the title does not rename the file. The app displays the title above the body, so a duplicate body heading is optional.</p></li>
+    <li><p>Use the toolbar for <a href="10-rich-text-and-layouts.html">formatting and layouts</a>, or add <a href="11-images-and-links.html">images and links</a>. For a Markdown page, edit the source and its first level-one heading instead; there is no separate Page title field.</p></li>
+    <li><p>Review the page and save it using the steps below.</p></li>
+  </ol>
+  <img src="assets/screenshots/05-html-editor.jpg" alt="HTML editor in the local demo with its formatting toolbar, page content, Describe your change, Cancel, and Save preview controls." width="960">
+  <p><em>Local demo: write in the visual editor and describe the change below it. Save preview stores the example in this browser; connected projects show Save to repository.</em></p>
+  <h2>Save and review the commit</h2>
+  <ol>
+    <li><p>Wait for image uploads to finish. Check every content tab, including panels that are currently hidden.</p></li>
+    <li><p>Under the editor, fill in <strong>Describe your change</strong>. The suggested message is <code>Create [page title]</code> or <code>Update [page title]</code>. A brief description such as “Add installation prerequisites” makes repository history useful. Messages allow up to 200 characters.</p></li>
+    <li><p>Click <strong>Save to repository</strong>. You can also press <strong>Ctrl+S</strong> on Windows/Linux or <strong>Cmd+S</strong> on macOS while focus is inside the content editor, its toolbar, or its content-tab controls. The shortcut is scoped to the editor; use the button when focus is in the title or change-description field.</p></li>
+    <li><p>Wait for <strong>Saving…</strong>. The app disables editing and further saves while the request is running.</p></li>
+    <li><p>After success, the page returns to reading view. Click <strong>Saved to GitHub. View commit ↗</strong> to inspect the commit. The draft for that saved revision is cleared.</p></li>
+  </ol>
+  <p>Saving publishes to the project's configured branch; there is no separate publish button or built-in pull-request approval step. Branch rules can prevent a direct save. An empty change description falls back to an update message. Documents have a 700,000-byte limit.</p>
+  <p>In the demo, the button is <strong>Save preview</strong> and success says <strong>Saved in your local preview.</strong> Demo changes stay in browser storage and create no GitHub commits.</p>
+  <img src="assets/screenshots/07-saved-preview.jpg" alt="Release checklist in reading view with the Saved in your local preview confirmation." width="960">
+  <p><em>Local demo: a successful preview save returns to reading view. This confirmation represents a browser-local save, not a GitHub commit.</em></p>
+  <h2>Cancel, leave, and recover a draft</h2>
+  <p>Click <strong>Cancel</strong> to return to reading. With unsaved changes, Useful Wiki asks whether you want to leave and explains that your draft stays in this tab. Canceling an unpublished page returns to its containing folder or project.</p>
+  <p>Title and content changes are stored in this tab's session storage. Returning to edit the same page revision can display <strong>Your unsaved draft from this tab has been restored.</strong> Drafts are tied to the user, project, file path, and original revision. They are not synchronized to another device or tab, and are not a permanent backup. The change-description field is not part of the restored draft.</p>
+  <p>If draft storage is full, keep the tab open and preserve your text elsewhere before leaving. <strong>Download draft</strong> appears after a save error; it is not a permanent toolbar action.</p>
+  <h2>Recover from a failed save or conflict</h2>
+  <ol>
+    <li><p>Read the error under the editor. Use <strong>Download draft</strong> to preserve the current page in its original HTML, Markdown, or rich JSON format.</p></li>
+    <li><p>If the file changed on GitHub, obtain the latest page and compare it with your downloaded draft. Reloading a newer revision does not automatically merge or restore the older draft.</p></li>
+    <li><p>Reapply or merge the intended edits into the latest revision, then save again. The app uses the revision you originally opened to prevent a silent overwrite.</p></li>
+  </ol>
+  <img src="assets/screenshots/34-failed-save.jpg" alt="A failed local-demo save displays HTML pages need a title between 1 and 200 characters and a Download draft button beneath the editor." width="960">
+  <p><em>Local demo: a save with an empty page title fails validation and reveals Download draft. Correct the title to retry; this example has not written a GitHub commit.</em></p>
+  <p>For authorization, branch-rule, rate-limit, and upload errors, see <a href="05-troubleshooting.html">Troubleshooting</a>. Repository contributors can also follow <a href="06-editing-from-your-repository.html">Editing from your repository</a>.</p>
+</body>
+</html>

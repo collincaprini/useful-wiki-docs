@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="useful-wiki-format" content="1">
+  <title>Architecture and trust boundaries</title>
+</head>
+<body>
+  <p>Useful Wiki is a Next.js application over ordinary GitHub repositories. The browser talks to Next.js; the server talks separately to GitHub for content and authorization, and PocketBase for identity and project metadata.</p>
+  <h2>Sources of truth</h2>
+  <ul>
+    <li><p><strong>GitHub:</strong> published pages, images, branches, history, and repository permissions. HTML is the complete source for an HTML page, with no synchronized JSON sidecar. Markdown and existing versioned <code>.wiki.json</code> documents retain their formats.</p></li>
+    <li><p><strong>PocketBase:</strong> <code>uw_users</code> identities and <code>uw_projects</code> registrations. One shared project selects a repository, branch, content folder, and Documentation or Wiki mode. Both collections have locked API rules.</p></li>
+    <li><p><strong>Browser:</strong> unpublished drafts and personal preferences. Demo content occupies a separate local-storage namespace and never mutates connected services.</p></li>
+  </ul>
+  <h2>Authorization on each request</h2>
+  <p>Next.js exchanges GitHub OAuth credentials and seals the caller's access token in an encrypted, HttpOnly, SameSite cookie. Sessions last at most eight hours or the provider's earlier expiry. GitHub tokens and repository contents never enter PocketBase; its service credential authorizes metadata operations only.</p>
+  <p>The server checks GitHub access before exposing project metadata, pages, images, search, or backlinks. Public repositories support anonymous reads. Private repositories require the visitor's GitHub authorization, and writes require their write access. Creator identity and cached visibility grant no access. Stable repository IDs survive renames and transfers.</p>
+  <p>GitHub requests use the caller's OAuth token, with no shared token or installation-token fallback. Content and project APIs use <code>no-store</code>; private images avoid a shared image optimizer. Mutations check the request Origin and bound JSON bodies. GitHub branch protection still applies.</p>
+  <h2>Saving and recovering</h2>
+  <p>Saving publishes a Git commit using the original file SHA. A changed revision causes a conflict; the app never substitutes a newer SHA to force an overwrite. Drafts retain their original revision in <code>sessionStorage</code>, keyed by user, project, and path. Failed saves preserve them; explicit sign-out clears them. There is no automatic merge interface.</p>
+  <p>Folder creation adds a hidden <code>.gitkeep</code>. Moves and deletions check the file or previewed folder revision, publish one commit, and never force a branch update. Paths stay inside the configured content root. Moves preserve file contents, so affected links need manual updates.</p>
+  <h2>Assets and discovery</h2>
+  <p>Uploads commit immediately to the reserved <code>assets/</code> directory beneath the content root. Cancelling a page edit leaves uploaded files in GitHub. Relative references keep images portable. Raster uploads are limited to 900 KB; documents to 700 KB. Search and backlinks scan up to 60 supported pages on demand and label partial results. Truncated repository trees are rejected.</p>
+  <h2>Code map</h2>
+  <p><code>src/app/api</code> defines request handlers; <code>src/lib/server</code> handles authorization and persistence; <code>src/components</code> integrates the UI. <code>src/editor</code> is a reusable editor snapshot, independent of GitHub, PocketBase, and app authentication.</p>
+  <p>See <a href="07-running-locally.html">local setup</a>, <a href="09-contributing.html">contributing</a>, and <a href="06-editing-from-your-repository.html">repository editing</a>. Return to <a href="00-welcome.html">the docs home</a>.</p>
+</body>
+</html>
